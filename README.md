@@ -1,24 +1,9 @@
-Idle Master
-===========
+Idle Master 2400
+================
 
-This program will determine which of your Steam games still have Steam Trading Card drops remaining, and will go through each application to simulate you being “in-game” so that cards will drop.  It will check periodically to see if the game you’re idling has card drops remaining.  When only one drop remains, it will start checking more frequently.  When the game you’re idling has no more cards, it’ll move on to the next game.  When no more cards are available, the program will terminate.
+The repository is a modification of the original [Idle Master](https://github.com/jshackles/idle_master). You could idle all the games which have badges if you choose `Ignore Steam client status` and `Idle games simultaneously up to 2400 hours` in the setting dialog. The number of running game is up to 1000.
 
-Requirements
--------
-
-This application requires Steam to be open and for you to be logged in.  This program is now being developed exclusively for Microsoft Windows.
-
-Non-Windows versions are available in the [Python repository](https://github.com/jshackles/idle_master_py) but may be depricated or feature incomplete.
-
-Setup
--------
-
-If you are an end user you can download an install Idle Master directly from http://www.steamidlemaster.com or by launching setup.exe included in the root of this repository.  You can also download the source repository above and compile the application using Microsoft Visual Studio.
-
-Translation
--------
-
-You can contribute your translation suggestions and vote on existing translations using our new [Translation Page](http://translate.steamidlemaster.com).
+A compiled version is placed in the release page.
 
 Credits
 -------

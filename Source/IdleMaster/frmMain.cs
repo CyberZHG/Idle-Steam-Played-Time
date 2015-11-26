@@ -105,12 +105,12 @@ namespace IdleMaster
 
         public void UpdateIdleProcesses()
         {
-            foreach (var badge in CanIdleBadges.Where(b => !Equals(b, CurrentBadge)))
+            foreach (var badge in AllBadges)
             {
-                if (badge.HoursPlayed >= 2 && badge.InIdle)
+                if (badge.HoursPlayed >= 2400 && badge.InIdle)
                     badge.StopIdle();
 
-                if (badge.HoursPlayed < 2 && CanIdleBadges.Count(b => b.InIdle) < 30)
+                if (badge.HoursPlayed < 2400 && CanIdleBadges.Count(b => b.InIdle) < 1000)
                     badge.Idle();
             }
 
@@ -224,7 +224,7 @@ namespace IdleMaster
                         }
                         else
                         {
-                            var multi = CanIdleBadges.Where(b => b.HoursPlayed < 2);
+                            var multi = CanIdleBadges.Where(b => b.HoursPlayed < 2400);
                             if (multi.Count() >= 2)
                             {
                                 StartMultipleIdle();
@@ -862,7 +862,7 @@ namespace IdleMaster
                     await LoadBadgesAsync();
                     UpdateIdleProcesses();
 
-                    isMultipleIdle = CanIdleBadges.Any(b => b.HoursPlayed < 2 && b.InIdle);
+                    isMultipleIdle = CanIdleBadges.Any(b => b.HoursPlayed < 2400 && b.InIdle);
                     if (isMultipleIdle)
                         TimeLeft = 360;
                 }
