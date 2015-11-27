@@ -45,9 +45,9 @@ namespace IdleMaster
             // Update totals
             if (ReloadCount == 0)
             {
-                lblIdle.Text = string.Format("{0} " + localization.strings.games_left_to_idle + ", {1} " + localization.strings.idle_now + ".", GamesRemaining, CanIdleBadges.Count(b => b.InIdle));
+                lblIdle.Text = string.Format("{0} " + localization.strings.games_left_to_idle + ", {1} " + localization.strings.idle_now + ".", GamesRemaining, AllBadges.Count(b => b.InIdle));
                 lblDrops.Text = CardsRemaining + " " + localization.strings.card_drops_remaining;
-                lblIdle.Visible = GamesRemaining != 0;
+                lblIdle.Visible = true;
                 lblDrops.Visible = CardsRemaining != 0;
             }
         }
@@ -105,12 +105,12 @@ namespace IdleMaster
 
         public void UpdateIdleProcesses()
         {
-            foreach (var badge in CanIdleBadges.Where(b => !Equals(b, CurrentBadge)))
+            foreach (var badge in AllBadges)
             {
-                if (badge.HoursPlayed >= 2 && badge.InIdle)
+                if (badge.HoursPlayed >= 2400 && badge.InIdle)
                     badge.StopIdle();
 
-                if (badge.HoursPlayed < 2 && CanIdleBadges.Count(b => b.InIdle) < 30)
+                if (badge.HoursPlayed < 2400 && AllBadges.Count(b => b.InIdle) < 1000)
                     badge.Idle();
             }
 
@@ -224,7 +224,7 @@ namespace IdleMaster
                         }
                         else
                         {
-                            var multi = CanIdleBadges.Where(b => b.HoursPlayed < 2);
+                            var multi = AllBadges.Where(b => b.HoursPlayed < 2400);
                             if (multi.Count() >= 2)
                             {
                                 StartMultipleIdle();
@@ -347,7 +347,7 @@ namespace IdleMaster
         private void RefreshGamesStateListView()
         {
             GamesState.Items.Clear();
-            foreach (var badge in CanIdleBadges.Where(b => b.InIdle))
+            foreach (var badge in AllBadges)
             {
                 var line = new ListViewItem(badge.Name);
                 line.SubItems.Add(badge.HoursPlayed.ToString());
@@ -856,13 +856,13 @@ namespace IdleMaster
                     await CheckCardDrops(CurrentBadge);
                 }
 
-                var isMultipleIdle = CanIdleBadges.Any(b => !Equals(b, CurrentBadge) && b.InIdle);
+                var isMultipleIdle = AllBadges.Any(b => !Equals(b, CurrentBadge) && b.InIdle);
                 if (isMultipleIdle)
                 {
                     await LoadBadgesAsync();
                     UpdateIdleProcesses();
 
-                    isMultipleIdle = CanIdleBadges.Any(b => b.HoursPlayed < 2 && b.InIdle);
+                    isMultipleIdle = AllBadges.Any(b => b.HoursPlayed < 2400 && b.InIdle);
                     if (isMultipleIdle)
                         TimeLeft = 360;
                 }
