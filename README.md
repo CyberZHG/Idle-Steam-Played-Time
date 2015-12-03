@@ -1,7 +1,7 @@
 Idle Master 2400
 ================
 
-The repository is a modification of the original [Idle Master](https://github.com/jshackles/idle_master). You could idle all the games which have badges if you choose `Ignore Steam client status` and `Idle games simultaneously up to 2400 hours` in the setting dialog. The number of running game is up to 1000.
+The repository is a modification of the original [Idle Master](https://github.com/jshackles/idle_master). You can idle 50 games simultaneously which have badges with least played hours if you choose `Ignore Steam client status` and `Idle games simultaneously up to 2400 hours` in the setting dialog.
 
 You can download the single compiled exe [here](https://github.com/XGG-Studio/idle_master_2400/releases/download/v1.4/IdleMaster2400.exe).
 

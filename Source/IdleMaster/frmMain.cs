@@ -105,12 +105,12 @@ namespace IdleMaster
 
         public void UpdateIdleProcesses()
         {
-            foreach (var badge in AllBadges)
+            foreach (var badge in AllBadges.OrderBy(b => b.HoursPlayed))
             {
                 if (badge.HoursPlayed >= 2400 && badge.InIdle)
                     badge.StopIdle();
 
-                if (badge.HoursPlayed < 2400 && AllBadges.Count(b => b.InIdle) < 1000)
+                if (badge.HoursPlayed < 2400 && AllBadges.Count(b => b.InIdle) < 50)
                     badge.Idle();
             }
 
