@@ -49,10 +49,10 @@ namespace IdleMaster
         {
             foreach (var badge in AllGames)
             {
-                if (badge.HoursPlayed >= 2400 && badge.InIdle)
+                if (badge.HoursPlayed >= Settings.Default.maxHour && badge.InIdle)
                     badge.StopIdle();
 
-                if (badge.HoursPlayed < 2400 && AllGames.Count(b => b.InIdle) < Settings.Default.simulNum)
+                if (badge.HoursPlayed < Settings.Default.maxHour && AllGames.Count(b => b.InIdle) < Settings.Default.simulNum)
                     badge.Idle();
             }
             RefreshGamesStateListView();
@@ -102,7 +102,7 @@ namespace IdleMaster
                 {
                     return;
                 }
-                var multi = AllGames.Where(b => b.HoursPlayed < 2400);
+                var multi = AllGames.Where(b => b.HoursPlayed < Settings.Default.maxHour);
                 if (multi.Count() > 0)
                 {
                     StartMultipleIdle();
@@ -208,7 +208,7 @@ namespace IdleMaster
             }
             AllGames = AllGames.OrderBy(b => b.HoursPlayed).ToList();
             RetryCount = 0;
-            if (AllGames.Where(b => b.HoursPlayed < 2400).Count() == 0)
+            if (AllGames.Where(b => b.HoursPlayed < Settings.Default.maxHour).Count() == 0)
             {
                 IdleComplete();
             }

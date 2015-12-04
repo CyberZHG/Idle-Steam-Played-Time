@@ -166,5 +166,17 @@ namespace IdleMaster.Properties {
                 this["simulNum"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2400")]
+        public int maxHour {
+            get {
+                return ((int)(this["maxHour"]));
+            }
+            set {
+                this["maxHour"] = value;
+            }
+        }
     }
 }

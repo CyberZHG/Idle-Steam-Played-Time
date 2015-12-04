@@ -21,6 +21,7 @@ namespace IdleMaster
         private void btnOK_Click(object sender, EventArgs e)
         {
             Settings.Default.simulNum = (int)numericSimulNum.Value;
+            Settings.Default.maxHour = (int)numericMaxHour.Value;
             if (cboLanguage.Text != "")
             {
                 if (cboLanguage.Text != Settings.Default.language)
@@ -80,6 +81,7 @@ namespace IdleMaster
             }
 
             numericSimulNum.Value = Settings.Default.simulNum;
+            numericMaxHour.Value = Settings.Default.maxHour;
         }
 
         private void btnAdvanced_Click(object sender, EventArgs e)
