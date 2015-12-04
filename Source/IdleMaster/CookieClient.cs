@@ -101,6 +101,33 @@ namespace IdleMaster
             }
         }
 
+        public static string GetHttp(string url, int count = 3)
+        {
+            while (true)
+            {
+                var client = new CookieClient();
+                var content = string.Empty;
+                try
+                {
+                    // If user is NOT authenticated (cookie got deleted in GetWebResponse()), return empty result
+                    if (String.IsNullOrEmpty(Settings.Default.sessionid))
+                    {
+                        return string.Empty;
+                    }
+                    content = client.DownloadString(url);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Exception(ex, "CookieClient -> GetHttp, for url = " + url);
+                }
+
+                if (!string.IsNullOrWhiteSpace(content) || count == 0)
+                    return content;
+
+                count = count - 1;
+            }
+        }
+
         public static async Task<bool> IsLogined()
         {
             var response = await GetHttpAsync(Settings.Default.myProfileURL);

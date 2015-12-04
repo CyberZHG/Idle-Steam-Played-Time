@@ -123,18 +123,6 @@
   <data name="badge_didnt_load" xml:space="preserve">
     <value>Badge page didn't load, will retry in __num__ seconds</value>
   </data>
-  <data name="blacklist" xml:space="preserve">
-    <value>&amp;Blacklist</value>
-  </data>
-  <data name="blacklist_current_game" xml:space="preserve">
-    <value>&amp;Blacklist Current Game</value>
-  </data>
-  <data name="card_drops_remaining" xml:space="preserve">
-    <value>card drops remaining</value>
-  </data>
-  <data name="currently_ingame" xml:space="preserve">
-    <value>Currently in-game</value>
-  </data>
   <data name="exit" xml:space="preserve">
     <value>E&amp;xit</value>
   </data>
@@ -143,9 +131,6 @@
   </data>
   <data name="game" xml:space="preserve">
     <value>&amp;Game</value>
-  </data>
-  <data name="games_left_to_idle" xml:space="preserve">
-    <value>games left to idle</value>
   </data>
   <data name="help" xml:space="preserve">
     <value>&amp;Help</value>
@@ -166,13 +151,10 @@
     <value>idle now</value>
   </data>
   <data name="idling_complete" xml:space="preserve">
-    <value>Idling complete, no more card drops available</value>
+    <value>Idling complete</value>
   </data>
   <data name="idling_paused" xml:space="preserve">
     <value>Idling paused</value>
-  </data>
-  <data name="loading_next" xml:space="preserve">
-    <value>Loading next game...</value>
   </data>
   <data name="name" xml:space="preserve">
     <value>Name</value>
@@ -185,9 +167,6 @@
   </data>
   <data name="official_group" xml:space="preserve">
     <value>&amp;Official Group</value>
-  </data>
-  <data name="pause_idling" xml:space="preserve">
-    <value>&amp;Pause Idling</value>
   </data>
   <data name="please_wait" xml:space="preserve">
     <value>please wait...</value>
@@ -215,9 +194,6 @@
   </data>
   <data name="skip_current_game" xml:space="preserve">
     <value>&amp;Skip Current Game</value>
-  </data>
-  <data name="sorting_results" xml:space="preserve">
-    <value>Sorting results based on your settings, please wait...</value>
   </data>
   <data name="statistics" xml:space="preserve">
     <value>&amp;Statistics</value>
@@ -263,14 +239,8 @@ your Steam account.</value>
   <data name="general" xml:space="preserve">
     <value>General</value>
   </data>
-  <data name="idle_individual" xml:space="preserve">
-    <value>Idle each game individually</value>
-  </data>
   <data name="idle_master_settings" xml:space="preserve">
     <value>Idle Master Settings</value>
-  </data>
-  <data name="idle_simultaneous" xml:space="preserve">
-    <value>Idle games simultaneously up to 2 hours, then individually</value>
   </data>
   <data name="idling_behavior" xml:space="preserve">
     <value>Idling Behavior</value>
@@ -284,9 +254,6 @@ your Steam account.</value>
   <data name="interface_language" xml:space="preserve">
     <value>Interface Language</value>
   </data>
-  <data name="manage_blacklist" xml:space="preserve">
-    <value>Manage Idle Master Blacklist</value>
-  </data>
   <data name="minimize_to_tray" xml:space="preserve">
     <value>Minimize Idle Master to system tray</value>
   </data>
@@ -296,20 +263,8 @@ your Steam account.</value>
   <data name="order_default" xml:space="preserve">
     <value>Default (Alphabetical Order)</value>
   </data>
-  <data name="order_least" xml:space="preserve">
-    <value>Prioritize games with the lowest number of available drops</value>
-  </data>
-  <data name="order_most" xml:space="preserve">
-    <value>Prioritize games with the highest number of available drops</value>
-  </data>
-  <data name="order_value" xml:space="preserve">
-    <value>Prioritize games with the highest card values</value>
-  </data>
   <data name="please_login" xml:space="preserve">
     <value>Please Login to Steam</value>
-  </data>
-  <data name="please_restart" xml:space="preserve">
-    <value>Please restart the application for language changes to take effect.</value>
   </data>
   <data name="release_notes_title" xml:space="preserve">
     <value>Idle Master Release Notes</value>
@@ -338,7 +293,16 @@ your Steam account.</value>
   <data name="validating" xml:space="preserve">
     <value>Validating...</value>
   </data>
-  <data name="idle_onethenmany" xml:space="preserve">
-    <value>Idle games with more than 2 hours individually, then simultaneously</value>
+  <data name="simul_num" xml:space="preserve">
+    <value>Simultaneous numbers:</value>
+  </data>
+  <data name="pause_idling" xml:space="preserve">
+    <value>&amp;Pause Idling</value>
+  </data>
+  <data name="please_restart" xml:space="preserve">
+    <value>Please restart the application for language changes to take effect.</value>
+  </data>
+  <data name="sorting_results" xml:space="preserve">
+    <value>Sorting results based on your settings, please wait...</value>
   </data>
 </root>

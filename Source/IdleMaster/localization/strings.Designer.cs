@@ -124,38 +124,11 @@ namespace IdleMaster.localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Blacklist.
-        /// </summary>
-        internal static string blacklist {
-            get {
-                return ResourceManager.GetString("blacklist", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Blacklist Current Game.
-        /// </summary>
-        internal static string blacklist_current_game {
-            get {
-                return ResourceManager.GetString("blacklist_current_game", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to &amp;Cancel.
         /// </summary>
         internal static string cancel {
             get {
                 return ResourceManager.GetString("cancel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to card drops remaining.
-        /// </summary>
-        internal static string card_drops_remaining {
-            get {
-                return ResourceManager.GetString("card_drops_remaining", resourceCulture);
             }
         }
         
@@ -170,15 +143,6 @@ namespace IdleMaster.localization {
         internal static string cookie_warning {
             get {
                 return ResourceManager.GetString("cookie_warning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Currently in-game.
-        /// </summary>
-        internal static string currently_ingame {
-            get {
-                return ResourceManager.GetString("currently_ingame", resourceCulture);
             }
         }
         
@@ -206,15 +170,6 @@ namespace IdleMaster.localization {
         internal static string game {
             get {
                 return ResourceManager.GetString("game", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to games left to idle.
-        /// </summary>
-        internal static string games_left_to_idle {
-            get {
-                return ResourceManager.GetString("games_left_to_idle", resourceCulture);
             }
         }
         
@@ -255,15 +210,6 @@ namespace IdleMaster.localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Idle each game individually.
-        /// </summary>
-        internal static string idle_individual {
-            get {
-                return ResourceManager.GetString("idle_individual", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Idle Master is connected to Steam.
         /// </summary>
         internal static string idle_master_connected {
@@ -300,24 +246,6 @@ namespace IdleMaster.localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Idle games with more than 2 hours individually, then simultaneously.
-        /// </summary>
-        internal static string idle_onethenmany {
-            get {
-                return ResourceManager.GetString("idle_onethenmany", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Idle games simultaneously up to 2 hours, then individually.
-        /// </summary>
-        internal static string idle_simultaneous {
-            get {
-                return ResourceManager.GetString("idle_simultaneous", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Idling Behavior.
         /// </summary>
         internal static string idling_behavior {
@@ -327,7 +255,7 @@ namespace IdleMaster.localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Idling complete, no more card drops available.
+        ///   Looks up a localized string similar to Idling complete.
         /// </summary>
         internal static string idling_complete {
             get {
@@ -368,24 +296,6 @@ namespace IdleMaster.localization {
         internal static string interface_language {
             get {
                 return ResourceManager.GetString("interface_language", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Loading next game....
-        /// </summary>
-        internal static string loading_next {
-            get {
-                return ResourceManager.GetString("loading_next", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Manage Idle Master Blacklist.
-        /// </summary>
-        internal static string manage_blacklist {
-            get {
-                return ResourceManager.GetString("manage_blacklist", resourceCulture);
             }
         }
         
@@ -449,33 +359,6 @@ namespace IdleMaster.localization {
         internal static string order_default {
             get {
                 return ResourceManager.GetString("order_default", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Prioritize games with the lowest number of available drops.
-        /// </summary>
-        internal static string order_least {
-            get {
-                return ResourceManager.GetString("order_least", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Prioritize games with the highest number of available drops.
-        /// </summary>
-        internal static string order_most {
-            get {
-                return ResourceManager.GetString("order_most", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Prioritize games with the highest card values.
-        /// </summary>
-        internal static string order_value {
-            get {
-                return ResourceManager.GetString("order_value", resourceCulture);
             }
         }
         
@@ -611,6 +494,15 @@ namespace IdleMaster.localization {
         internal static string signed_in_as {
             get {
                 return ResourceManager.GetString("signed_in_as", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Simultaneous numbers:.
+        /// </summary>
+        internal static string simul_num {
+            get {
+                return ResourceManager.GetString("simul_num", resourceCulture);
             }
         }
         

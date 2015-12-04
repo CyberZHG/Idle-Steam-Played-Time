@@ -121,49 +121,24 @@
     <value>17, 17</value>
   </metadata>
   <metadata name="tmrCheckSteam.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>285, 17</value>
+    <value>341, 17</value>
   </metadata>
   <metadata name="mnuTop.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>415, 17</value>
+    <value>479, 17</value>
   </metadata>
   <metadata name="mnuTop.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pauseIdlingToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DAAACwwBP0AiyAAAADdJREFUOE/NyiEOAAAMAjH+/+nNYyo3ElQvrzb1npyBnIGcgZyBnIGcgZyBnIGc
-        gZyBnIH8ZMkCvO9foTwSufQAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="resumeIdlingToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DAAACwwBP0AiyAAAAElJREFUOE9jGFTgABA7QJjkgf9QTLZBMAPINgjdABgm2iBsmpExQYOwacKGcRqE
-        TTE2TLYBZHuB7EAkWiMMkK0RBsjWOJCAgQEAoPdHxQxVK1YAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="skipGameToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DAAACwwBP0AiyAAAAH9JREFUOE/NkMEJgEAMBO9pG1qP1qQ9WY91+NQskiUsyT386MCAlw0hsf2C3Zye
-        zy6XSPA4zc0cUCjoDnAPczEzYh8kGsDsLO0hGrh6luZEA9XP0jrRQMWAWWqQaODihNV8dQJ+4mhGtIfE
-        oq+bEfsgwUPXzSgHZOtmlAO+pLUbU3VrldzCVq0AAAAASUVORK5CYII=
-</value>
-  </data>
   <metadata name="tmrReadyToGo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 54</value>
-  </metadata>
-  <metadata name="tmrCardDropCheck.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>143, 54</value>
+    <value>576, 17</value>
   </metadata>
   <metadata name="ssFooter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>289, 54</value>
+    <value>709, 17</value>
   </metadata>
   <metadata name="notifyIcon1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>382, 54</value>
+    <value>806, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="notifyIcon1.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAgIAAAAAAIAAoCAEAFgAAACgAAACAAAAAAAEAAAEAIAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA
@@ -1297,13 +1272,13 @@
 </value>
   </data>
   <metadata name="tmrStartNext.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>489, 54</value>
+    <value>919, 17</value>
   </metadata>
   <metadata name="tmrBadgeReload.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 91</value>
+    <value>17, 56</value>
   </metadata>
-  <metadata name="tmrStatistics.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>172, 17</value>
+  <metadata name="tmrCardDropCheck.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>184, 17</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>138</value>
