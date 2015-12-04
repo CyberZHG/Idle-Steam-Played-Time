@@ -175,29 +175,6 @@
     <EmbeddedResource Include="frmSettingsAdvanced.resx">
       <DependentUpon>frmSettingsAdvanced.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="localization\strings.cs.resx" />
-    <EmbeddedResource Include="localization\strings.de.resx" />
-    <EmbeddedResource Include="localization\strings.el.resx" />
-    <EmbeddedResource Include="localization\strings.es.resx" />
-    <EmbeddedResource Include="localization\strings.fi.resx" />
-    <EmbeddedResource Include="localization\strings.fr.resx" />
-    <EmbeddedResource Include="localization\strings.hu.resx" />
-    <EmbeddedResource Include="localization\strings.it.resx" />
-    <EmbeddedResource Include="localization\strings.ja.resx" />
-    <EmbeddedResource Include="localization\strings.ko.resx" />
-    <EmbeddedResource Include="localization\strings.nl.resx" />
-    <EmbeddedResource Include="localization\strings.no.resx" />
-    <EmbeddedResource Include="localization\strings.pl.resx" />
-    <EmbeddedResource Include="localization\strings.pt-BR.resx" />
-    <EmbeddedResource Include="localization\strings.pt.resx" />
-    <EmbeddedResource Include="localization\strings.ro.resx" />
-    <EmbeddedResource Include="localization\strings.ru.resx" />
-    <EmbeddedResource Include="localization\strings.sv.resx" />
-    <EmbeddedResource Include="localization\strings.th.resx" />
-    <EmbeddedResource Include="localization\strings.tr.resx" />
-    <EmbeddedResource Include="localization\strings.uk.resx" />
-    <EmbeddedResource Include="localization\strings.zh-TW.resx" />
-    <EmbeddedResource Include="localization\strings.zh.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>

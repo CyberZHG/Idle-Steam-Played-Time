@@ -22,14 +22,6 @@ namespace IdleMaster
         {
             Settings.Default.simulNum = (int)numericSimulNum.Value;
             Settings.Default.maxHour = (int)numericMaxHour.Value;
-            if (cboLanguage.Text != "")
-            {
-                if (cboLanguage.Text != Settings.Default.language)
-                {
-                    MessageBox.Show(localization.strings.please_restart);
-                }
-                Settings.Default.language = cboLanguage.Text;
-            }
 
             Settings.Default.minToTray = chkMinToTray.Checked;
             Settings.Default.showUsername = chkShowUsername.Checked;
@@ -39,37 +31,6 @@ namespace IdleMaster
 
         private void frmSettings_Load(object sender, EventArgs e)
         {
-            if (Settings.Default.language != "")
-            {
-                cboLanguage.SelectedItem = Settings.Default.language;
-            }
-            else
-            {
-                switch (Thread.CurrentThread.CurrentUICulture.EnglishName)
-                {
-                    case "Chinese (Simplified, China)":
-                    case "Chinese (Traditional, China)":
-                    case "Portuguese (Brazil)":
-                        cboLanguage.SelectedItem = Thread.CurrentThread.CurrentUICulture.EnglishName;
-                        break;
-                    default:
-                        cboLanguage.SelectedItem = Regex.Replace(Thread.CurrentThread.CurrentUICulture.EnglishName, @"\(.+\)", "").Trim();
-                        break;
-                }
-            }
-
-            // Load translation
-            this.Text = localization.strings.idle_master_settings;
-            grpGeneral.Text = localization.strings.general;
-            btnOK.Text = localization.strings.accept;
-            btnCancel.Text = localization.strings.cancel;
-            ttHints.SetToolTip(btnAdvanced, localization.strings.advanced_auth);
-            chkMinToTray.Text = localization.strings.minimize_to_tray;
-            ttHints.SetToolTip(chkMinToTray, localization.strings.minimize_to_tray);
-            chkShowUsername.Text = localization.strings.show_username;
-            ttHints.SetToolTip(chkShowUsername, localization.strings.show_username);
-            lblLanguage.Text = localization.strings.interface_language;
-
             if (Settings.Default.minToTray)
             {
                 chkMinToTray.Checked = true;
