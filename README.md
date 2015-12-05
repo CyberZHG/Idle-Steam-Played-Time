@@ -1,7 +1,7 @@
 Idle Master 2400
 ================
 
-The repository is a modification of the original [Idle Master](https://github.com/jshackles/idle_master). You can idle multiple games simultaneously with least played hours.
+The repository is a modification of the original [Idle Master](https://github.com/jshackles/idle_master). You can idle multiple games simultaneously, a game with more played time will have a higher probability to be idled.
 
 You can download the single compiled exe [here](https://github.com/XGG-Studio/idle_master_2400/releases/download/v1.4/IdleMaster2400.exe).
 

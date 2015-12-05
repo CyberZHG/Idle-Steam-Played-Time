@@ -23,7 +23,7 @@ namespace IdleMaster
 
         public bool IsCookieReady;
         public bool IsSteamReady;
-        public int TimeLeft = 3600;
+        public int TimeLeft = 600;
         public int RetryCount = 0;
         public int ReloadCount = 0;
         
@@ -45,20 +45,39 @@ namespace IdleMaster
         public void UpdateIdleProcesses()
         {
             StopIdle();
-            foreach (var game in AllGames)
-            {
-                if (game.HoursPlayed < Settings.Default.maxHour && AllGames.Count(b => b.InIdle) < Settings.Default.simulNum)
-                {
-                    game.Idle();
-                }
-            }
-            for (int i = AllGames.Count - 1; i >= 0; --i)
+            int n = AllGames.Count;
+            int[] appIds = new int[n];
+            double[] sum = new double[n];
+            for (int i = 0; i < n; ++i)
             {
                 var game = AllGames.ElementAt(i);
-                if (game.HoursPlayed < Settings.Default.maxHour && !game.InIdle)
+                appIds[i] = game.AppId;
+                sum[i] = game.HoursPlayed + 1.0;
+                if (game.HoursPlayed >= Settings.Default.maxHour)
                 {
-                    game.Idle();
-                    break;
+                    sum[i] = 0.0;
+                }
+                if (i > 0)
+                {
+                    sum[i] += sum[i - 1];
+                }
+            }
+            Random random = new Random();
+            for (int i = 0; i < Settings.Default.simulNum; ++i)
+            {
+                double r = random.NextDouble() * (sum[n - 1] + 1e-8);
+                for (int j = 0; j < n; ++j)
+                {
+                    if ((j == 0 && r < sum[0]) || (j > 0 && sum[j - 1] < r && r < sum[j]))
+                    {
+                        var game = AllGames.ElementAt(j);
+                        game.Idle();
+                        for (int k = j; k < n; ++k)
+                        {
+                            sum[k] -= game.HoursPlayed;
+                        }
+                        break;
+                    }
                 }
             }
             RefreshGamesStateListView();
@@ -123,7 +142,7 @@ namespace IdleMaster
         public void StartMultipleIdle()
         {
             // Reset the timer
-            TimeLeft = 3600;
+            TimeLeft = 600;
             
             RefreshGamesStateListView();
         }
@@ -445,7 +464,7 @@ namespace IdleMaster
             {
 
                 LoadGamesAsync();
-                TimeLeft = 3600;
+                TimeLeft = 600;
             }
             else
             {
