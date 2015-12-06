@@ -35,8 +35,6 @@ namespace IdleMaster
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.lblCookieStatus = new System.Windows.Forms.Label();
             this.tmrCheckCookieData = new System.Windows.Forms.Timer(this.components);
-            this.lblSteamStatus = new System.Windows.Forms.Label();
-            this.tmrCheckSteam = new System.Windows.Forms.Timer(this.components);
             this.lnkResetCookies = new System.Windows.Forms.LinkLabel();
             this.lnkSignIn = new System.Windows.Forms.LinkLabel();
             this.mnuTop = new System.Windows.Forms.MenuStrip();
@@ -45,7 +43,6 @@ namespace IdleMaster
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changelogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.officialGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,27 +52,25 @@ namespace IdleMaster
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.picCookieStatus = new System.Windows.Forms.PictureBox();
-            this.picSteamStatus = new System.Windows.Forms.PictureBox();
             this.tmrStartNext = new System.Windows.Forms.Timer(this.components);
             this.tmrBadgeReload = new System.Windows.Forms.Timer(this.components);
             this.lblSignedOnAs = new System.Windows.Forms.Label();
             this.GamesState = new System.Windows.Forms.ListView();
+            this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.AppId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.GameName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Hours = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.InIdle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tmrCardDropCheck = new System.Windows.Forms.Timer(this.components);
-            this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.AppId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.mnuTop.SuspendLayout();
             this.ssFooter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCookieStatus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSteamStatus)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCookieStatus
             // 
             this.lblCookieStatus.AutoSize = true;
-            this.lblCookieStatus.Location = new System.Drawing.Point(31, 54);
+            this.lblCookieStatus.Location = new System.Drawing.Point(31, 37);
             this.lblCookieStatus.Name = "lblCookieStatus";
             this.lblCookieStatus.Size = new System.Drawing.Size(227, 12);
             this.lblCookieStatus.TabIndex = 0;
@@ -86,25 +81,10 @@ namespace IdleMaster
             this.tmrCheckCookieData.Enabled = true;
             this.tmrCheckCookieData.Tick += new System.EventHandler(this.tmrCheckCookieData_Tick);
             // 
-            // lblSteamStatus
-            // 
-            this.lblSteamStatus.AutoSize = true;
-            this.lblSteamStatus.Location = new System.Drawing.Point(30, 33);
-            this.lblSteamStatus.Name = "lblSteamStatus";
-            this.lblSteamStatus.Size = new System.Drawing.Size(125, 12);
-            this.lblSteamStatus.TabIndex = 3;
-            this.lblSteamStatus.Text = "Steam is not running";
-            // 
-            // tmrCheckSteam
-            // 
-            this.tmrCheckSteam.Enabled = true;
-            this.tmrCheckSteam.Interval = 500;
-            this.tmrCheckSteam.Tick += new System.EventHandler(this.tmrCheckSteam_Tick);
-            // 
             // lnkResetCookies
             // 
             this.lnkResetCookies.AutoSize = true;
-            this.lnkResetCookies.Location = new System.Drawing.Point(233, 54);
+            this.lnkResetCookies.Location = new System.Drawing.Point(233, 37);
             this.lnkResetCookies.Name = "lnkResetCookies";
             this.lnkResetCookies.Size = new System.Drawing.Size(65, 12);
             this.lnkResetCookies.TabIndex = 4;
@@ -115,7 +95,7 @@ namespace IdleMaster
             // lnkSignIn
             // 
             this.lnkSignIn.AutoSize = true;
-            this.lnkSignIn.Location = new System.Drawing.Point(243, 54);
+            this.lnkSignIn.Location = new System.Drawing.Point(243, 37);
             this.lnkSignIn.Name = "lnkSignIn";
             this.lnkSignIn.Size = new System.Drawing.Size(59, 12);
             this.lnkSignIn.TabIndex = 5;
@@ -169,21 +149,12 @@ namespace IdleMaster
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.changelogToolStripMenuItem,
             this.officialGroupToolStripMenuItem,
             this.toolStripMenuItem3,
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "&Help";
-            // 
-            // changelogToolStripMenuItem
-            // 
-            this.changelogToolStripMenuItem.Image = global::IdleMaster.Properties.Resources.imgDocument;
-            this.changelogToolStripMenuItem.Name = "changelogToolStripMenuItem";
-            this.changelogToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.changelogToolStripMenuItem.Text = "&Release Notes";
-            this.changelogToolStripMenuItem.Click += new System.EventHandler(this.changelogToolStripMenuItem_Click);
             // 
             // officialGroupToolStripMenuItem
             // 
@@ -248,19 +219,11 @@ namespace IdleMaster
             // 
             // picCookieStatus
             // 
-            this.picCookieStatus.Location = new System.Drawing.Point(15, 53);
+            this.picCookieStatus.Location = new System.Drawing.Point(15, 36);
             this.picCookieStatus.Name = "picCookieStatus";
             this.picCookieStatus.Size = new System.Drawing.Size(15, 15);
             this.picCookieStatus.TabIndex = 8;
             this.picCookieStatus.TabStop = false;
-            // 
-            // picSteamStatus
-            // 
-            this.picSteamStatus.Location = new System.Drawing.Point(15, 31);
-            this.picSteamStatus.Name = "picSteamStatus";
-            this.picSteamStatus.Size = new System.Drawing.Size(15, 15);
-            this.picSteamStatus.TabIndex = 7;
-            this.picSteamStatus.TabStop = false;
             // 
             // tmrStartNext
             // 
@@ -274,7 +237,7 @@ namespace IdleMaster
             // lblSignedOnAs
             // 
             this.lblSignedOnAs.AutoSize = true;
-            this.lblSignedOnAs.Location = new System.Drawing.Point(30, 66);
+            this.lblSignedOnAs.Location = new System.Drawing.Point(30, 49);
             this.lblSignedOnAs.Name = "lblSignedOnAs";
             this.lblSignedOnAs.Size = new System.Drawing.Size(77, 12);
             this.lblSignedOnAs.TabIndex = 27;
@@ -292,13 +255,22 @@ namespace IdleMaster
             this.GameName,
             this.Hours,
             this.InIdle});
-            this.GamesState.Location = new System.Drawing.Point(15, 80);
+            this.GamesState.Location = new System.Drawing.Point(15, 75);
             this.GamesState.Margin = new System.Windows.Forms.Padding(2);
             this.GamesState.Name = "GamesState";
-            this.GamesState.Size = new System.Drawing.Size(365, 309);
+            this.GamesState.Size = new System.Drawing.Size(365, 314);
             this.GamesState.TabIndex = 28;
             this.GamesState.UseCompatibleStateImageBehavior = false;
             this.GamesState.View = System.Windows.Forms.View.Details;
+            // 
+            // Id
+            // 
+            this.Id.Text = "ID";
+            this.Id.Width = 26;
+            // 
+            // AppId
+            // 
+            this.AppId.Text = "App ID";
             // 
             // GameName
             // 
@@ -323,15 +295,6 @@ namespace IdleMaster
             this.tmrCardDropCheck.Interval = 1000;
             this.tmrCardDropCheck.Tick += new System.EventHandler(this.tmrCardDropCheck_Tick);
             // 
-            // Id
-            // 
-            this.Id.Text = "ID";
-            this.Id.Width = 26;
-            // 
-            // AppId
-            // 
-            this.AppId.Text = "App ID";
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -341,10 +304,8 @@ namespace IdleMaster
             this.Controls.Add(this.GamesState);
             this.Controls.Add(this.lblSignedOnAs);
             this.Controls.Add(this.picCookieStatus);
-            this.Controls.Add(this.picSteamStatus);
             this.Controls.Add(this.lnkSignIn);
             this.Controls.Add(this.lnkResetCookies);
-            this.Controls.Add(this.lblSteamStatus);
             this.Controls.Add(this.lblCookieStatus);
             this.Controls.Add(this.mnuTop);
             this.Controls.Add(this.ssFooter);
@@ -360,7 +321,6 @@ namespace IdleMaster
             this.ssFooter.ResumeLayout(false);
             this.ssFooter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCookieStatus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSteamStatus)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -370,11 +330,8 @@ namespace IdleMaster
 
         private Label lblCookieStatus;
         private Timer tmrCheckCookieData;
-        private Label lblSteamStatus;
-        private Timer tmrCheckSteam;
         private LinkLabel lnkResetCookies;
         private LinkLabel lnkSignIn;
-        private PictureBox picSteamStatus;
         private PictureBox picCookieStatus;
         private MenuStrip mnuTop;
         private ToolStripMenuItem fileToolStripMenuItem;
@@ -389,7 +346,6 @@ namespace IdleMaster
         private ToolStripStatusLabel toolStripStatusLabel1;
         private NotifyIcon notifyIcon1;
         private Timer tmrStartNext;
-        private ToolStripMenuItem changelogToolStripMenuItem;
         private ToolStripMenuItem officialGroupToolStripMenuItem;
         private ToolStripSeparator toolStripMenuItem3;
         private Timer tmrBadgeReload;

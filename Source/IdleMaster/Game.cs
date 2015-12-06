@@ -5,21 +5,19 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using IdleMaster.Properties;
+using System.IO;
 
 namespace IdleMaster
 {
     public class Game
     {
+        private static string GAME_PATH = "games/";
+        private static string IDLER_NAME = "idler.exe";
+        private static string STEAM_DLL_NAME = "steam_api.dll";
+        private static string STEAM_APPID_TXT_NAME = "steam_appid.txt";
+
         public int AppId { get; set; }
-
         public string Name { get; set; }
-
-        public string StringId
-        {
-            get { return AppId.ToString(); }
-            set { AppId = string.IsNullOrWhiteSpace(value) ? 0 : int.Parse(value); }
-        }
-        
         public double HoursPlayed { get; set; }
 
         private Process idleProcess;
@@ -32,7 +30,35 @@ namespace IdleMaster
             {
                 return idleProcess;
             }
-            idleProcess = Process.Start(new ProcessStartInfo("steam-idle.exe", AppId.ToString()) { WindowStyle = ProcessWindowStyle.Hidden });
+            if (!Directory.Exists(GAME_PATH))
+            {
+                Directory.CreateDirectory(GAME_PATH);
+            }
+            string appPath = GAME_PATH + AppId.ToString() + "/";
+            if (!Directory.Exists(appPath))
+            {
+                Directory.CreateDirectory(appPath);
+            }
+            string steamDllPath = appPath + STEAM_DLL_NAME;
+            if (!File.Exists(steamDllPath))
+            {
+                File.Copy(STEAM_DLL_NAME, steamDllPath);
+            }
+            string steamAppIdTxtPath = appPath + STEAM_APPID_TXT_NAME;
+            if (!File.Exists(steamAppIdTxtPath))
+            {
+                StreamWriter writer = new StreamWriter(steamAppIdTxtPath);
+                writer.WriteLine(AppId);
+                writer.Flush();
+                writer.Close();
+            }
+            string idlerPath = appPath + IDLER_NAME;
+            if (!File.Exists(idlerPath))
+            {
+                File.Copy(IDLER_NAME, idlerPath);
+            }
+            string processPath = Environment.CurrentDirectory + "/" + idlerPath;
+            idleProcess = Process.Start(new ProcessStartInfo(processPath) { WindowStyle = ProcessWindowStyle.Hidden });
             return idleProcess;
         }
 
@@ -62,7 +88,7 @@ namespace IdleMaster
 
         public override string ToString()
         {
-            return string.IsNullOrWhiteSpace(Name) ? StringId : Name;
+            return string.IsNullOrWhiteSpace(Name) ? AppId.ToString() : Name;
         }
 
         public Game(int id, string name, double hours) : this()

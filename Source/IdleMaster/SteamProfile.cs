@@ -15,29 +15,6 @@ namespace IdleMaster
             return index != -1 ? steamid.Remove(index) : steamid;
         }
 
-        internal static string GetSteamIdName()
-        {
-            var steamUrl = GetSteamUrl();
-            try
-            {
-                var xmlRaw = new WebClient() { Encoding = Encoding.UTF8 }.DownloadString(string.Format("{0}/?xml=1", steamUrl));
-                var xml = new XmlDocument();
-                xml.LoadXml(xmlRaw);
-                var nameNode = xml.SelectSingleNode("//customURL");
-                if (nameNode != null)
-                {
-                    return WebUtility.HtmlDecode(nameNode.InnerText);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                Logger.Exception(ex, "frmMain -> GetSignedAs, for steamUrl = " + steamUrl);
-            }
-            return string.Empty;
-        }
-
-
         internal static string GetSteamUrl()
         {
             return "http://steamcommunity.com/profiles/" + GetSteamId();

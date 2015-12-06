@@ -1,5 +1,5 @@
 ﻿using IdleMaster.Properties;
-using Steamworks;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,12 +8,10 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Management;
-using System.Net;
 using System.Security.Principal;
-using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
-using System.Xml;
 
 namespace IdleMaster
 {
@@ -22,7 +20,6 @@ namespace IdleMaster
         public List<Game> AllGames { get; set; }
 
         public bool IsCookieReady;
-        public bool IsSteamReady;
         public int TimeLeft = 600;
         public int RetryCount = 0;
         public int ReloadCount = 0;
@@ -46,6 +43,10 @@ namespace IdleMaster
         {
             StopIdle();
             int n = AllGames.Count;
+            if (n == 0)
+            {
+                return;
+            }
             int[] appIds = new int[n];
             double[] sum = new double[n];
             for (int i = 0; i < n; ++i)
@@ -65,7 +66,7 @@ namespace IdleMaster
             Random random = new Random();
             for (int i = 0; i < Settings.Default.simulNum; ++i)
             {
-                double r = random.NextDouble() * (sum[n - 1] + 1e-8);
+                double r = random.NextDouble() * sum[n - 1];
                 for (int j = 0; j < n; ++j)
                 {
                     if ((j == 0 && r < sum[0]) || (j > 0 && sum[j - 1] < r && r < sum[j]))
@@ -74,7 +75,7 @@ namespace IdleMaster
                         game.Idle();
                         for (int k = j; k < n; ++k)
                         {
-                            sum[k] -= game.HoursPlayed;
+                            sum[k] -= game.HoursPlayed + 1.0 + 1e-10;
                         }
                         break;
                     }
@@ -117,7 +118,7 @@ namespace IdleMaster
             
             // Check if user is authenticated and if any badge left to idle
             // There should be check for IsCookieReady, but property is set in timer tick, so it could take some time to be set.
-            if (string.IsNullOrWhiteSpace(Settings.Default.sessionid) || !IsSteamReady)
+            if (string.IsNullOrWhiteSpace(Settings.Default.sessionid))
             {
                 ResetClientStatus();
             }
@@ -150,6 +151,7 @@ namespace IdleMaster
         private void RefreshGamesStateListView()
         {
             GamesState.Items.Clear();
+            AllGames = AllGames.OrderByDescending(b => b.HoursPlayed).ToList();
             for (int i = 0; i < AllGames.Count; ++i)
             {
                 var game = AllGames.ElementAt(i);
@@ -185,17 +187,21 @@ namespace IdleMaster
 
         public void LoadGamesAsync()
         {
-            var profileLink = "http://steamcommunity.com/id/" + SteamProfile.GetSteamIdName() + "/games/?tab=all&xml=1";
+            var gamesURL = "http://steamcommunity.com/profiles/" + SteamProfile.GetSteamId() + "/games/?tab=all";
             try
             {
-                var webClient = new WebClient() { Encoding = Encoding.UTF8 };
-                webClient.DownloadStringCompleted += (sender, e) =>
+                var response = CookieClient.GetHttp(gamesURL);
+                if (string.IsNullOrEmpty(response))
                 {
-                    var xml = new XmlDocument();
-                    xml.LoadXml(e.Result);
-                    ProcessGamesOnPage(xml);
-                };
-                webClient.DownloadStringAsync(new Uri(profileLink));
+                    RetryCount++;
+                    if (RetryCount == 18)
+                    {
+                        ResetClientStatus();
+                        return;
+                    }
+                    throw new Exception("");
+                }
+                ProcessGamesOnPage(response);
             }
             catch (Exception ex)
             {
@@ -207,34 +213,32 @@ namespace IdleMaster
         }
 
         /// <summary>
-        /// Processes all badges on page
+        /// Processes all games
         /// </summary>
-        /// <param name="document">HTML document (1 page) from x</param>
-        private void ProcessGamesOnPage(XmlDocument document)
+        private void ProcessGamesOnPage(string document)
         {
-            foreach (XmlNode gameNode in document.SelectNodes("//game"))
+            var gamesJson = Regex.Match(document, @"var rgGames = ([^\n]*)").Groups[1].ToString();
+            for (int i = gamesJson.Count() - 1; i >= 0; --i)
             {
-                var appid = Int32.Parse(gameNode.SelectSingleNode("./appID").InnerText);
-                var name = gameNode.SelectSingleNode("./name").InnerText;
-                var hours = 0.0;
-                try
+                if (gamesJson[i] == ';')
                 {
-                    hours = Double.Parse(gameNode.SelectSingleNode("./hoursOnRecord").InnerText);
+                    gamesJson = gamesJson.Remove(i);
+                    break;
                 }
-                catch (Exception)
+            }
+            var gameApps = JsonConvert.DeserializeObject<GameApp[]>(gamesJson);
+            foreach (var gameApp in gameApps)
+            {
+                var gameInMemory = AllGames.FirstOrDefault(g => g.AppId == gameApp.AppId);
+                if (gameInMemory != null)
                 {
-                }
-                var badgeInMemory = AllGames.FirstOrDefault(b => b.AppId == appid);
-                if (badgeInMemory != null)
-                {
-                    badgeInMemory.UpdateStats(hours);
+                    gameInMemory.UpdateStats(gameApp.HoursForever);
                 }
                 else
                 {
-                    AllGames.Add(new Game(appid, name, hours));
+                    AllGames.Add(new Game(gameApp.AppId, gameApp.Name, gameApp.HoursForever));
                 }
             }
-            AllGames = AllGames.OrderBy(b => b.HoursPlayed).ToList();
             RetryCount = 0;
             if (AllGames.Where(b => b.HoursPlayed < Settings.Default.maxHour).Count() == 0)
             {
@@ -299,16 +303,6 @@ namespace IdleMaster
             IsCookieReady = connected;
         }
 
-        private void tmrCheckSteam_Tick(object sender, EventArgs e)
-        {
-            var isSteamRunning = SteamAPI.IsSteamRunning() || Settings.Default.ignoreclient;
-            lblSteamStatus.Text = isSteamRunning ? (Settings.Default.ignoreclient ? localization.strings.steam_ignored : localization.strings.steam_running) : localization.strings.steam_notrunning;
-            lblSteamStatus.ForeColor = isSteamRunning ? Color.Green : Color.Black;
-            picSteamStatus.Image = isSteamRunning ? Resources.imgTrue : Resources.imgFalse;
-            tmrCheckSteam.Interval = isSteamRunning ? 5000 : 500;
-            IsSteamReady = isSteamRunning;
-        }
-
         private void lnkResetCookies_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ResetClientStatus();
@@ -333,7 +327,6 @@ namespace IdleMaster
             AllGames.Clear();
             
             // Set timer intervals
-            tmrCheckSteam.Interval = 500;
             tmrCheckCookieData.Interval = 500;
 
             // Hide signed user name
@@ -363,7 +356,7 @@ namespace IdleMaster
 
         private void tmrReadyToGo_Tick(object sender, EventArgs e)
         {
-            if (!IsCookieReady || !IsSteamReady)
+            if (!IsCookieReady)
                 return;
 
             // Update the form elements
@@ -435,12 +428,6 @@ namespace IdleMaster
             StartIdle();
         }
 
-        private void changelogToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var frm = new frmChangelog();
-            frm.Show();
-        }
-
         private void officialGroupToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start("http://steamcommunity.com/groups/idlemastery");
@@ -462,7 +449,6 @@ namespace IdleMaster
         {
             if (TimeLeft <= 0)
             {
-
                 LoadGamesAsync();
                 TimeLeft = 600;
             }
