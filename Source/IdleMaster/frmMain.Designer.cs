@@ -62,6 +62,7 @@ namespace IdleMaster
             this.Hours = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.InIdle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tmrCardDropCheck = new System.Windows.Forms.Timer(this.components);
+            this.Count = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.mnuTop.SuspendLayout();
             this.ssFooter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCookieStatus)).BeginInit();
@@ -111,7 +112,7 @@ namespace IdleMaster
             this.mnuTop.Location = new System.Drawing.Point(0, 0);
             this.mnuTop.Name = "mnuTop";
             this.mnuTop.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.mnuTop.Size = new System.Drawing.Size(394, 24);
+            this.mnuTop.Size = new System.Drawing.Size(583, 24);
             this.mnuTop.TabIndex = 19;
             this.mnuTop.Text = "menuStrip1";
             // 
@@ -192,7 +193,7 @@ namespace IdleMaster
             this.ssFooter.Name = "ssFooter";
             this.ssFooter.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ssFooter.ShowItemToolTips = true;
-            this.ssFooter.Size = new System.Drawing.Size(394, 22);
+            this.ssFooter.Size = new System.Drawing.Size(583, 22);
             this.ssFooter.SizingGrip = false;
             this.ssFooter.TabIndex = 20;
             this.ssFooter.Text = "statusStrip1";
@@ -254,11 +255,12 @@ namespace IdleMaster
             this.AppId,
             this.GameName,
             this.Hours,
-            this.InIdle});
+            this.InIdle,
+            this.Count});
             this.GamesState.Location = new System.Drawing.Point(15, 75);
             this.GamesState.Margin = new System.Windows.Forms.Padding(2);
             this.GamesState.Name = "GamesState";
-            this.GamesState.Size = new System.Drawing.Size(365, 314);
+            this.GamesState.Size = new System.Drawing.Size(554, 314);
             this.GamesState.TabIndex = 28;
             this.GamesState.UseCompatibleStateImageBehavior = false;
             this.GamesState.View = System.Windows.Forms.View.Details;
@@ -276,13 +278,13 @@ namespace IdleMaster
             // 
             this.GameName.Tag = "";
             this.GameName.Text = "Name";
-            this.GameName.Width = 196;
+            this.GameName.Width = 274;
             // 
             // Hours
             // 
             this.Hours.Text = "Hours";
             this.Hours.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Hours.Width = 44;
+            this.Hours.Width = 98;
             // 
             // InIdle
             // 
@@ -295,12 +297,16 @@ namespace IdleMaster
             this.tmrCardDropCheck.Interval = 1000;
             this.tmrCardDropCheck.Tick += new System.EventHandler(this.tmrCardDropCheck_Tick);
             // 
+            // Count
+            // 
+            this.Count.Text = "Count";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(394, 413);
+            this.ClientSize = new System.Drawing.Size(583, 413);
             this.Controls.Add(this.GamesState);
             this.Controls.Add(this.lblSignedOnAs);
             this.Controls.Add(this.picCookieStatus);
@@ -357,6 +363,7 @@ namespace IdleMaster
         private ColumnHeader InIdle;
         private ColumnHeader Id;
         private ColumnHeader AppId;
+        private ColumnHeader Count;
     }
 }
 

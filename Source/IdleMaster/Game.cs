@@ -19,6 +19,7 @@ namespace IdleMaster
         public int AppId { get; set; }
         public string Name { get; set; }
         public double HoursPlayed { get; set; }
+        public int SelectedCount { get; set; }
 
         private Process idleProcess;
 

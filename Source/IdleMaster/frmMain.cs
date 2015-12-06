@@ -20,7 +20,7 @@ namespace IdleMaster
         public List<Game> AllGames { get; set; }
 
         public bool IsCookieReady;
-        public int TimeLeft = 600;
+        public int TimeLeft = 3600;
         public int RetryCount = 0;
         public int ReloadCount = 0;
         
@@ -73,6 +73,7 @@ namespace IdleMaster
                     {
                         var game = AllGames.ElementAt(j);
                         game.Idle();
+                        ++game.SelectedCount;
                         for (int k = j; k < n; ++k)
                         {
                             sum[k] -= game.HoursPlayed + 1.0 + 1e-10;
@@ -143,7 +144,7 @@ namespace IdleMaster
         public void StartMultipleIdle()
         {
             // Reset the timer
-            TimeLeft = 600;
+            TimeLeft = 3600;
             
             RefreshGamesStateListView();
         }
@@ -152,6 +153,8 @@ namespace IdleMaster
         {
             GamesState.Items.Clear();
             AllGames = AllGames.OrderByDescending(b => b.HoursPlayed).ToList();
+            double totalHour = 0.0;
+            int totalSelected = 0;
             for (int i = 0; i < AllGames.Count; ++i)
             {
                 var game = AllGames.ElementAt(i);
@@ -160,8 +163,18 @@ namespace IdleMaster
                 line.SubItems.Add(game.Name);
                 line.SubItems.Add(game.HoursPlayed.ToString());
                 line.SubItems.Add(game.InIdle ? "Y" : "");
+                line.SubItems.Add(game.SelectedCount.ToString());
                 GamesState.Items.Add(line);
+                totalHour += game.HoursPlayed;
+                totalSelected += game.SelectedCount;
             }
+            var sumLine = new ListViewItem("0");
+            sumLine.SubItems.Add("");
+            sumLine.SubItems.Add("Total");
+            sumLine.SubItems.Add(totalHour.ToString());
+            sumLine.SubItems.Add("");
+            sumLine.SubItems.Add(totalSelected.ToString());
+            GamesState.Items.Insert(0, sumLine);
         }
 
         public void StopIdle()
