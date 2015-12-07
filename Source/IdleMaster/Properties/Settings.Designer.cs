@@ -142,5 +142,29 @@ namespace IdleMaster.Properties {
                 this["maxHour"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string whiteList {
+            get {
+                return ((string)(this["whiteList"]));
+            }
+            set {
+                this["whiteList"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string blackList {
+            get {
+                return ((string)(this["blackList"]));
+            }
+            set {
+                this["blackList"] = value;
+            }
+        }
     }
 }

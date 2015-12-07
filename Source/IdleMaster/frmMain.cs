@@ -16,6 +16,8 @@ namespace IdleMaster
     public partial class frmMain : Form
     {
         public List<Game> AllGames { get; set; }
+        private List<int> whiteList;
+        private List<int> blackList;
 
         public bool IsCookieReady;
         public int TimeLeft = 3600;
@@ -46,19 +48,31 @@ namespace IdleMaster
                 return;
             }
             int[] appIds = new int[n];
+            double[] hours = new double[n];
             double[] sum = new double[n];
             for (int i = 0; i < n; ++i)
             {
                 var game = AllGames.ElementAt(i);
                 appIds[i] = game.AppId;
-                sum[i] = game.HoursPlayed + 1.0;
-                if (game.HoursPlayed >= Settings.Default.maxHour)
+                if (game.HoursPlayed >= Settings.Default.maxHour || blackList.Contains(appIds[i]))
                 {
-                    sum[i] = 0.0;
+                    hours[i] = 0.0;
+                }
+                else
+                {
+                    hours[i] = game.HoursPlayed + 1.0;
+                    if (whiteList.Contains(appIds[i]))
+                    {
+                        hours[i] *= 5;
+                    }
                 }
                 if (i > 0)
                 {
-                    sum[i] += sum[i - 1];
+                    sum[i] += hours[i] + sum[i - 1];
+                }
+                else
+                {
+                    sum[i] = hours[i];
                 }
             }
             Random random = new Random();
@@ -74,7 +88,7 @@ namespace IdleMaster
                         ++game.SelectedCount;
                         for (int k = j; k < n; ++k)
                         {
-                            sum[k] -= game.HoursPlayed + 1.0 + 1e-10;
+                            sum[k] -= hours[j] + 1e-10;
                         }
                         break;
                     }
@@ -149,30 +163,34 @@ namespace IdleMaster
 
         private void RefreshGamesStateListView()
         {
-            GamesState.Items.Clear();
+            dataGridGameState.Rows.Clear();
             AllGames = AllGames.OrderByDescending(b => b.HoursPlayed).ToList();
             double totalHour = 0.0;
             int totalSelected = 0;
             for (int i = 0; i < AllGames.Count; ++i)
             {
                 var game = AllGames.ElementAt(i);
-                var line = new ListViewItem((i + 1).ToString());
-                line.SubItems.Add(game.AppId.ToString());
-                line.SubItems.Add(game.Name);
-                line.SubItems.Add(game.HoursPlayed.ToString());
-                line.SubItems.Add(game.InIdle ? "Y" : "");
-                line.SubItems.Add(game.SelectedCount.ToString());
-                GamesState.Items.Add(line);
                 totalHour += game.HoursPlayed;
                 totalSelected += game.SelectedCount;
+                dataGridGameState.Rows.Add(new object[] {
+                    (i + 1).ToString(),
+                    game.AppId.ToString(),
+                    game.Name,
+                    game.HoursPlayed.ToString(),
+                    game.InIdle,
+                    game.SelectedCount,
+                    whiteList.Contains(game.AppId),
+                    blackList.Contains(game.AppId) });
             }
-            var sumLine = new ListViewItem("0");
-            sumLine.SubItems.Add("");
-            sumLine.SubItems.Add("Total");
-            sumLine.SubItems.Add(totalHour.ToString());
-            sumLine.SubItems.Add("");
-            sumLine.SubItems.Add(totalSelected.ToString());
-            GamesState.Items.Insert(0, sumLine);
+            dataGridGameState.Rows.Insert(0, new object[] {
+                    "0",
+                    "",
+                    "Total",
+                    totalHour.ToString(),
+                    false,
+                    totalSelected.ToString(),
+                    false,
+                    false });
         }
 
         public void StopIdle()
@@ -262,6 +280,8 @@ namespace IdleMaster
         {
             InitializeComponent();
             AllGames = new List<Game>();
+            whiteList = Settings.Default.whiteList.Split(',').Select(s => Int32.Parse(s)).ToList();
+            blackList = Settings.Default.blackList.Split(',').Select(s => Int32.Parse(s)).ToList();
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -439,6 +459,57 @@ namespace IdleMaster
             {
                 TimeLeft = TimeLeft - 1;
                 lblTimer.Text = TimeSpan.FromSeconds(TimeLeft).ToString(@"mm\:ss");
+            }
+        }
+
+        private void dataGridGameState_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
+            {
+                return;
+            }
+            string appIdStr = dataGridGameState.Rows[e.RowIndex].Cells[ColAppId.Index].Value.ToString();
+            if (appIdStr == "")
+            {
+                return;
+            }
+            DataGridViewCheckBoxCell cell = (DataGridViewCheckBoxCell)dataGridGameState.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            int appId = Int32.Parse(appIdStr);
+            if (appId == 0)
+            {
+                return;
+            }
+            if (e.ColumnIndex == ColFavor.Index)
+            {
+                if ((bool)cell.Value)
+                {
+                    if (!whiteList.Contains(appId))
+                    {
+                        whiteList.Add(appId);
+                    }
+                }
+                else
+                {
+                    whiteList.Remove(appId);
+                }
+                Settings.Default.whiteList = String.Join(",", whiteList.Select(i => i.ToString()).ToArray());
+                Settings.Default.Save();
+            }
+            else
+            {
+                if ((bool)cell.Value)
+                {
+                    if (!blackList.Contains(appId))
+                    {
+                        blackList.Add(appId);
+                    }
+                }
+                else
+                {
+                    blackList.Remove(appId);
+                }
+                Settings.Default.blackList = String.Join(",", blackList.Select(i => i.ToString()).ToArray());
+                Settings.Default.Save();
             }
         }
     }

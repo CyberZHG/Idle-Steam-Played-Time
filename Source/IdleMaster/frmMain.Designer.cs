@@ -54,17 +54,20 @@ namespace IdleMaster
             this.picCookieStatus = new System.Windows.Forms.PictureBox();
             this.tmrStartNext = new System.Windows.Forms.Timer(this.components);
             this.tmrBadgeReload = new System.Windows.Forms.Timer(this.components);
-            this.GamesState = new System.Windows.Forms.ListView();
-            this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.AppId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.GameName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Hours = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.InIdle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Count = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tmrCardDropCheck = new System.Windows.Forms.Timer(this.components);
+            this.dataGridGameState = new System.Windows.Forms.DataGridView();
+            this.ColId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColAppId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColHours = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColIdle = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.IdleCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColFavor = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColNever = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.mnuTop.SuspendLayout();
             this.ssFooter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCookieStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridGameState)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCookieStatus
@@ -111,7 +114,7 @@ namespace IdleMaster
             this.mnuTop.Location = new System.Drawing.Point(0, 0);
             this.mnuTop.Name = "mnuTop";
             this.mnuTop.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.mnuTop.Size = new System.Drawing.Size(583, 24);
+            this.mnuTop.Size = new System.Drawing.Size(733, 24);
             this.mnuTop.TabIndex = 19;
             this.mnuTop.Text = "menuStrip1";
             // 
@@ -192,7 +195,7 @@ namespace IdleMaster
             this.ssFooter.Name = "ssFooter";
             this.ssFooter.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ssFooter.ShowItemToolTips = true;
-            this.ssFooter.Size = new System.Drawing.Size(583, 22);
+            this.ssFooter.Size = new System.Drawing.Size(733, 22);
             this.ssFooter.SizingGrip = false;
             this.ssFooter.TabIndex = 20;
             this.ssFooter.Text = "statusStrip1";
@@ -234,69 +237,105 @@ namespace IdleMaster
             this.tmrBadgeReload.Interval = 1000;
             this.tmrBadgeReload.Tick += new System.EventHandler(this.tmrBadgeReload_Tick);
             // 
-            // GamesState
-            // 
-            this.GamesState.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.GamesState.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Id,
-            this.AppId,
-            this.GameName,
-            this.Hours,
-            this.InIdle,
-            this.Count});
-            this.GamesState.Location = new System.Drawing.Point(15, 56);
-            this.GamesState.Margin = new System.Windows.Forms.Padding(2);
-            this.GamesState.Name = "GamesState";
-            this.GamesState.Size = new System.Drawing.Size(554, 333);
-            this.GamesState.TabIndex = 28;
-            this.GamesState.UseCompatibleStateImageBehavior = false;
-            this.GamesState.View = System.Windows.Forms.View.Details;
-            // 
-            // Id
-            // 
-            this.Id.Text = "ID";
-            this.Id.Width = 26;
-            // 
-            // AppId
-            // 
-            this.AppId.Text = "App ID";
-            // 
-            // GameName
-            // 
-            this.GameName.Tag = "";
-            this.GameName.Text = "Name";
-            this.GameName.Width = 274;
-            // 
-            // Hours
-            // 
-            this.Hours.Text = "Hours";
-            this.Hours.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Hours.Width = 98;
-            // 
-            // InIdle
-            // 
-            this.InIdle.Text = "In";
-            this.InIdle.Width = 31;
-            // 
-            // Count
-            // 
-            this.Count.Text = "Count";
-            // 
             // tmrCardDropCheck
             // 
             this.tmrCardDropCheck.Enabled = true;
             this.tmrCardDropCheck.Interval = 1000;
             this.tmrCardDropCheck.Tick += new System.EventHandler(this.tmrCardDropCheck_Tick);
             // 
+            // dataGridGameState
+            // 
+            this.dataGridGameState.AllowUserToAddRows = false;
+            this.dataGridGameState.AllowUserToDeleteRows = false;
+            this.dataGridGameState.AllowUserToOrderColumns = true;
+            this.dataGridGameState.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridGameState.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridGameState.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColId,
+            this.ColAppId,
+            this.ColName,
+            this.ColHours,
+            this.ColIdle,
+            this.IdleCount,
+            this.ColFavor,
+            this.ColNever});
+            this.dataGridGameState.Location = new System.Drawing.Point(13, 56);
+            this.dataGridGameState.Name = "dataGridGameState";
+            this.dataGridGameState.RowHeadersVisible = false;
+            this.dataGridGameState.RowTemplate.Height = 23;
+            this.dataGridGameState.Size = new System.Drawing.Size(706, 332);
+            this.dataGridGameState.TabIndex = 29;
+            this.dataGridGameState.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridGameState_CellValueChanged);
+            // 
+            // ColId
+            // 
+            this.ColId.HeaderText = "ID";
+            this.ColId.Name = "ColId";
+            this.ColId.ReadOnly = true;
+            this.ColId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColId.Width = 40;
+            // 
+            // ColAppId
+            // 
+            this.ColAppId.HeaderText = "App ID";
+            this.ColAppId.Name = "ColAppId";
+            this.ColAppId.ReadOnly = true;
+            this.ColAppId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColAppId.Width = 80;
+            // 
+            // ColName
+            // 
+            this.ColName.FillWeight = 200F;
+            this.ColName.HeaderText = "Name";
+            this.ColName.Name = "ColName";
+            this.ColName.ReadOnly = true;
+            this.ColName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColName.Width = 300;
+            // 
+            // ColHours
+            // 
+            this.ColHours.HeaderText = "Hours";
+            this.ColHours.Name = "ColHours";
+            this.ColHours.ReadOnly = true;
+            this.ColHours.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColHours.Width = 80;
+            // 
+            // ColIdle
+            // 
+            this.ColIdle.HeaderText = "Idle";
+            this.ColIdle.Name = "ColIdle";
+            this.ColIdle.ReadOnly = true;
+            this.ColIdle.Width = 40;
+            // 
+            // IdleCount
+            // 
+            this.IdleCount.HeaderText = "Count";
+            this.IdleCount.Name = "IdleCount";
+            this.IdleCount.ReadOnly = true;
+            this.IdleCount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.IdleCount.Width = 60;
+            // 
+            // ColFavor
+            // 
+            this.ColFavor.HeaderText = "Favor";
+            this.ColFavor.Name = "ColFavor";
+            this.ColFavor.Width = 40;
+            // 
+            // ColNever
+            // 
+            this.ColNever.HeaderText = "Never";
+            this.ColNever.Name = "ColNever";
+            this.ColNever.Width = 40;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(583, 413);
-            this.Controls.Add(this.GamesState);
+            this.ClientSize = new System.Drawing.Size(733, 413);
+            this.Controls.Add(this.dataGridGameState);
             this.Controls.Add(this.picCookieStatus);
             this.Controls.Add(this.lnkSignIn);
             this.Controls.Add(this.lnkResetCookies);
@@ -306,7 +345,7 @@ namespace IdleMaster
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mnuTop;
             this.Name = "frmMain";
-            this.Text = "More Steam Played Time";
+            this.Text = "Idle Steam Played Time";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClose);
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.Resize += new System.EventHandler(this.frmMain_Resize);
@@ -315,6 +354,7 @@ namespace IdleMaster
             this.ssFooter.ResumeLayout(false);
             this.ssFooter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCookieStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridGameState)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,14 +383,16 @@ namespace IdleMaster
         private ToolStripMenuItem officialGroupToolStripMenuItem;
         private ToolStripSeparator toolStripMenuItem3;
         private Timer tmrBadgeReload;
-    private ListView GamesState;
-    private ColumnHeader GameName;
-    private ColumnHeader Hours;
         private Timer tmrCardDropCheck;
-        private ColumnHeader InIdle;
-        private ColumnHeader Id;
-        private ColumnHeader AppId;
-        private ColumnHeader Count;
+        private DataGridView dataGridGameState;
+        private DataGridViewTextBoxColumn ColId;
+        private DataGridViewTextBoxColumn ColAppId;
+        private DataGridViewTextBoxColumn ColName;
+        private DataGridViewTextBoxColumn ColHours;
+        private DataGridViewCheckBoxColumn ColIdle;
+        private DataGridViewTextBoxColumn IdleCount;
+        private DataGridViewCheckBoxColumn ColFavor;
+        private DataGridViewCheckBoxColumn ColNever;
     }
 }
 
