@@ -1,9 +1,9 @@
-Idle Master 2400
-================
+Idle Steam Played Time
+======================
 
 The repository is a modification of the original [Idle Master](https://github.com/jshackles/idle_master). You can idle multiple games simultaneously, a game with more played time will have a higher probability to be idled.
 
-You can find the lastest built files in the [release](https://github.com/XGG-Studio/idle_master_2400/releases) page.
+You can find the lastest built files in the [release](https://github.com/XGG-Studio/Idle-Steam-Played-Time/releases) page.
 
 Credits
 -------
