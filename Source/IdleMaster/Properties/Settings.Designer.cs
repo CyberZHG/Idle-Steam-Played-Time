@@ -74,18 +74,6 @@ namespace IdleMaster.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool minToTray {
-            get {
-                return ((bool)(this["minToTray"]));
-            }
-            set {
-                this["minToTray"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool updateNeeded {
             get {
                 return ((bool)(this["updateNeeded"]));
@@ -128,18 +116,6 @@ namespace IdleMaster.Properties {
             }
             set {
                 this["simulNum"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2400")]
-        public int maxHour {
-            get {
-                return ((int)(this["maxHour"]));
-            }
-            set {
-                this["maxHour"] = value;
             }
         }
         

@@ -88,15 +88,6 @@ namespace IdleMaster.localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add Game to Blacklist.
-        /// </summary>
-        internal static string add_game_blacklist {
-            get {
-                return ResourceManager.GetString("add_game_blacklist", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Display advanced authentication information.
         /// </summary>
         internal static string advanced_auth {
@@ -111,15 +102,6 @@ namespace IdleMaster.localization {
         internal static string auth_data {
             get {
                 return ResourceManager.GetString("auth_data", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Badge page didn&apos;t load, will retry in __num__ seconds.
-        /// </summary>
-        internal static string badge_didnt_load {
-            get {
-                return ResourceManager.GetString("badge_didnt_load", resourceCulture);
             }
         }
         
@@ -206,24 +188,6 @@ namespace IdleMaster.localization {
         internal static string hrs_on_record {
             get {
                 return ResourceManager.GetString("hrs_on_record", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Idle Master is connected to Steam.
-        /// </summary>
-        internal static string idle_master_connected {
-            get {
-                return ResourceManager.GetString("idle_master_connected", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Idle Master is not connected to Steam.
-        /// </summary>
-        internal static string idle_master_notconnected {
-            get {
-                return ResourceManager.GetString("idle_master_notconnected", resourceCulture);
             }
         }
         
@@ -381,15 +345,6 @@ namespace IdleMaster.localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please restart the application for language changes to take effect..
-        /// </summary>
-        internal static string please_restart {
-            get {
-                return ResourceManager.GetString("please_restart", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to please wait....
         /// </summary>
         internal static string please_wait {
@@ -444,7 +399,7 @@ namespace IdleMaster.localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Idle Master is saving your information.
+        ///   Looks up a localized string similar to IdleSteamPlayedTime is saving your information.
         /// </summary>
         internal static string saving_info {
             get {
@@ -458,15 +413,6 @@ namespace IdleMaster.localization {
         internal static string settings {
             get {
                 return ResourceManager.GetString("settings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Show Steam username of signed on user.
-        /// </summary>
-        internal static string show_username {
-            get {
-                return ResourceManager.GetString("show_username", resourceCulture);
             }
         }
         
@@ -512,15 +458,6 @@ namespace IdleMaster.localization {
         internal static string skip_current_game {
             get {
                 return ResourceManager.GetString("skip_current_game", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sorting results based on your settings, please wait....
-        /// </summary>
-        internal static string sorting_results {
-            get {
-                return ResourceManager.GetString("sorting_results", resourceCulture);
             }
         }
         

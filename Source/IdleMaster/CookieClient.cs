@@ -89,9 +89,8 @@ namespace IdleMaster
 
                     content = await client.DownloadStringTaskAsync(url);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Logger.Exception(ex, "CookieClient -> GetHttpAsync, for url = " + url);
                 }
 
                 if (!string.IsNullOrWhiteSpace(content) || count == 0)
@@ -116,9 +115,8 @@ namespace IdleMaster
                     }
                     content = client.DownloadString(url);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Logger.Exception(ex, "CookieClient -> GetHttp, for url = " + url);
                 }
 
                 if (!string.IsNullOrWhiteSpace(content) || count == 0)

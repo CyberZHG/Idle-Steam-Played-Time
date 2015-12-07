@@ -14,9 +14,6 @@
     <Setting Name="steamparental" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="minToTray" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
     <Setting Name="updateNeeded" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
@@ -28,9 +25,6 @@
     </Setting>
     <Setting Name="simulNum" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10</Value>
-    </Setting>
-    <Setting Name="maxHour" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">2400</Value>
     </Setting>
     <Setting Name="whiteList" Type="System.String" Scope="User">
       <Value Profile="(Default)">0</Value>
