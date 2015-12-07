@@ -54,15 +54,14 @@ namespace IdleMaster
             this.picCookieStatus = new System.Windows.Forms.PictureBox();
             this.tmrStartNext = new System.Windows.Forms.Timer(this.components);
             this.tmrBadgeReload = new System.Windows.Forms.Timer(this.components);
-            this.lblSignedOnAs = new System.Windows.Forms.Label();
             this.GamesState = new System.Windows.Forms.ListView();
             this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.AppId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.GameName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Hours = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.InIdle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tmrCardDropCheck = new System.Windows.Forms.Timer(this.components);
             this.Count = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tmrCardDropCheck = new System.Windows.Forms.Timer(this.components);
             this.mnuTop.SuspendLayout();
             this.ssFooter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCookieStatus)).BeginInit();
@@ -235,16 +234,6 @@ namespace IdleMaster
             this.tmrBadgeReload.Interval = 1000;
             this.tmrBadgeReload.Tick += new System.EventHandler(this.tmrBadgeReload_Tick);
             // 
-            // lblSignedOnAs
-            // 
-            this.lblSignedOnAs.AutoSize = true;
-            this.lblSignedOnAs.Location = new System.Drawing.Point(30, 49);
-            this.lblSignedOnAs.Name = "lblSignedOnAs";
-            this.lblSignedOnAs.Size = new System.Drawing.Size(77, 12);
-            this.lblSignedOnAs.TabIndex = 27;
-            this.lblSignedOnAs.Text = "Signed in as";
-            this.lblSignedOnAs.Visible = false;
-            // 
             // GamesState
             // 
             this.GamesState.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -257,10 +246,10 @@ namespace IdleMaster
             this.Hours,
             this.InIdle,
             this.Count});
-            this.GamesState.Location = new System.Drawing.Point(15, 75);
+            this.GamesState.Location = new System.Drawing.Point(15, 56);
             this.GamesState.Margin = new System.Windows.Forms.Padding(2);
             this.GamesState.Name = "GamesState";
-            this.GamesState.Size = new System.Drawing.Size(554, 314);
+            this.GamesState.Size = new System.Drawing.Size(554, 333);
             this.GamesState.TabIndex = 28;
             this.GamesState.UseCompatibleStateImageBehavior = false;
             this.GamesState.View = System.Windows.Forms.View.Details;
@@ -291,15 +280,15 @@ namespace IdleMaster
             this.InIdle.Text = "In";
             this.InIdle.Width = 31;
             // 
+            // Count
+            // 
+            this.Count.Text = "Count";
+            // 
             // tmrCardDropCheck
             // 
             this.tmrCardDropCheck.Enabled = true;
             this.tmrCardDropCheck.Interval = 1000;
             this.tmrCardDropCheck.Tick += new System.EventHandler(this.tmrCardDropCheck_Tick);
-            // 
-            // Count
-            // 
-            this.Count.Text = "Count";
             // 
             // frmMain
             // 
@@ -308,7 +297,6 @@ namespace IdleMaster
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(583, 413);
             this.Controls.Add(this.GamesState);
-            this.Controls.Add(this.lblSignedOnAs);
             this.Controls.Add(this.picCookieStatus);
             this.Controls.Add(this.lnkSignIn);
             this.Controls.Add(this.lnkResetCookies);
@@ -318,7 +306,7 @@ namespace IdleMaster
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mnuTop;
             this.Name = "frmMain";
-            this.Text = "Idle Master 2400";
+            this.Text = "More Steam Played Time";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClose);
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.Resize += new System.EventHandler(this.frmMain_Resize);
@@ -355,7 +343,6 @@ namespace IdleMaster
         private ToolStripMenuItem officialGroupToolStripMenuItem;
         private ToolStripSeparator toolStripMenuItem3;
         private Timer tmrBadgeReload;
-        private Label lblSignedOnAs;
     private ListView GamesState;
     private ColumnHeader GameName;
     private ColumnHeader Hours;

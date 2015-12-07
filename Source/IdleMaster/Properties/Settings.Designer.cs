@@ -97,18 +97,6 @@ namespace IdleMaster.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool showUsername {
-            get {
-                return ((bool)(this["showUsername"]));
-            }
-            set {
-                this["showUsername"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string steamRememberLogin {
             get {
@@ -128,18 +116,6 @@ namespace IdleMaster.Properties {
             }
             set {
                 this["steamMachineAuth"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string language {
-            get {
-                return ((string)(this["language"]));
-            }
-            set {
-                this["language"] = value;
             }
         }
         

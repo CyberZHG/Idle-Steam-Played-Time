@@ -4,13 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Management;
 using System.Security.Principal;
 using System.Text.RegularExpressions;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace IdleMaster
@@ -289,14 +287,6 @@ namespace IdleMaster
                 Settings.Default.updateNeeded = false;
                 Settings.Default.Save();
             }
-
-            // Set the interface language from the settings
-            if (Settings.Default.language != "")
-            {
-                string language_string = "en";
-                Thread.CurrentThread.CurrentUICulture = new CultureInfo(language_string);                
-            }            
-            
         }
 
         private void frmMain_FormClose(object sender, FormClosedEventArgs e)
@@ -342,13 +332,6 @@ namespace IdleMaster
             // Set timer intervals
             tmrCheckCookieData.Interval = 500;
 
-            // Hide signed user name
-            if (Settings.Default.showUsername)
-            {
-                lblSignedOnAs.Text = String.Empty;
-                lblSignedOnAs.Visible = false;
-            }
-
             // Set IsCookieReady to false
             IsCookieReady = false;
 
@@ -372,13 +355,6 @@ namespace IdleMaster
             if (!IsCookieReady)
                 return;
 
-            // Update the form elements
-            if (Settings.Default.showUsername)
-            {
-                lblSignedOnAs.Text = SteamProfile.GetSignedAs();
-                lblSignedOnAs.Visible = true;
-            }
-
             tmrReadyToGo.Enabled = false;
 
             // Call the loadBadges() function asynchronously
@@ -390,13 +366,7 @@ namespace IdleMaster
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form frm = new frmSettings();
-            frm.ShowDialog();
-            
-            if (Settings.Default.showUsername && IsCookieReady)
-            {
-                lblSignedOnAs.Text = SteamProfile.GetSignedAs();
-                lblSignedOnAs.Visible = Settings.Default.showUsername;
-            }            
+            frm.ShowDialog();          
         }
         
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -463,7 +433,7 @@ namespace IdleMaster
             if (TimeLeft <= 0)
             {
                 LoadGamesAsync();
-                TimeLeft = 600;
+                TimeLeft = 3600;
             }
             else
             {

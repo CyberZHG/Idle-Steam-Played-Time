@@ -38,7 +38,6 @@ namespace IdleMaster
             this.labelMaxHour = new System.Windows.Forms.Label();
             this.numericSimulNum = new System.Windows.Forms.NumericUpDown();
             this.labelSimulNum = new System.Windows.Forms.Label();
-            this.chkShowUsername = new System.Windows.Forms.CheckBox();
             this.chkMinToTray = new System.Windows.Forms.CheckBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
@@ -57,18 +56,17 @@ namespace IdleMaster
             this.grpGeneral.Controls.Add(this.labelMaxHour);
             this.grpGeneral.Controls.Add(this.numericSimulNum);
             this.grpGeneral.Controls.Add(this.labelSimulNum);
-            this.grpGeneral.Controls.Add(this.chkShowUsername);
             this.grpGeneral.Controls.Add(this.chkMinToTray);
             this.grpGeneral.Location = new System.Drawing.Point(13, 12);
             this.grpGeneral.Name = "grpGeneral";
-            this.grpGeneral.Size = new System.Drawing.Size(345, 122);
+            this.grpGeneral.Size = new System.Drawing.Size(345, 98);
             this.grpGeneral.TabIndex = 0;
             this.grpGeneral.TabStop = false;
             this.grpGeneral.Text = "General";
             // 
             // numericMaxHour
             // 
-            this.numericMaxHour.Location = new System.Drawing.Point(143, 90);
+            this.numericMaxHour.Location = new System.Drawing.Point(143, 66);
             this.numericMaxHour.Maximum = new decimal(new int[] {
             876000,
             0,
@@ -92,7 +90,7 @@ namespace IdleMaster
             // labelMaxHour
             // 
             this.labelMaxHour.AutoSize = true;
-            this.labelMaxHour.Location = new System.Drawing.Point(78, 92);
+            this.labelMaxHour.Location = new System.Drawing.Point(78, 68);
             this.labelMaxHour.Name = "labelMaxHour";
             this.labelMaxHour.Size = new System.Drawing.Size(59, 12);
             this.labelMaxHour.TabIndex = 7;
@@ -101,7 +99,7 @@ namespace IdleMaster
             // 
             // numericSimulNum
             // 
-            this.numericSimulNum.Location = new System.Drawing.Point(143, 64);
+            this.numericSimulNum.Location = new System.Drawing.Point(143, 40);
             this.numericSimulNum.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -125,23 +123,12 @@ namespace IdleMaster
             // labelSimulNum
             // 
             this.labelSimulNum.AutoSize = true;
-            this.labelSimulNum.Location = new System.Drawing.Point(6, 66);
+            this.labelSimulNum.Location = new System.Drawing.Point(6, 42);
             this.labelSimulNum.Name = "labelSimulNum";
             this.labelSimulNum.Size = new System.Drawing.Size(131, 12);
             this.labelSimulNum.TabIndex = 5;
             this.labelSimulNum.Text = "Simultaneous numbers:";
             this.labelSimulNum.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // chkShowUsername
-            // 
-            this.chkShowUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkShowUsername.Location = new System.Drawing.Point(8, 40);
-            this.chkShowUsername.Name = "chkShowUsername";
-            this.chkShowUsername.Size = new System.Drawing.Size(331, 18);
-            this.chkShowUsername.TabIndex = 2;
-            this.chkShowUsername.Text = "Show Steam username of signed on user";
-            this.chkShowUsername.UseVisualStyleBackColor = true;
             // 
             // chkMinToTray
             // 
@@ -158,7 +145,7 @@ namespace IdleMaster
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(283, 147);
+            this.btnCancel.Location = new System.Drawing.Point(283, 118);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 21);
             this.btnCancel.TabIndex = 2;
@@ -169,7 +156,7 @@ namespace IdleMaster
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(202, 147);
+            this.btnOK.Location = new System.Drawing.Point(202, 118);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 21);
             this.btnOK.TabIndex = 3;
@@ -181,7 +168,7 @@ namespace IdleMaster
             // 
             this.btnAdvanced.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAdvanced.Image = global::IdleMaster.Properties.Resources.imgLock;
-            this.btnAdvanced.Location = new System.Drawing.Point(12, 147);
+            this.btnAdvanced.Location = new System.Drawing.Point(12, 118);
             this.btnAdvanced.Name = "btnAdvanced";
             this.btnAdvanced.Size = new System.Drawing.Size(25, 21);
             this.btnAdvanced.TabIndex = 4;
@@ -195,7 +182,7 @@ namespace IdleMaster
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(370, 179);
+            this.ClientSize = new System.Drawing.Size(370, 150);
             this.Controls.Add(this.btnAdvanced);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
@@ -223,7 +210,6 @@ namespace IdleMaster
         private Button btnOK;
         private Button btnAdvanced;
         private ToolTip ttHints;
-        private CheckBox chkShowUsername;
         private NumericUpDown numericSimulNum;
         private Label labelSimulNum;
         private NumericUpDown numericMaxHour;

@@ -1,8 +1,6 @@
-﻿using System;
+﻿using IdleMaster.Properties;
+using System;
 using System.Windows.Forms;
-using IdleMaster.Properties;
-using System.Threading;
-using System.Text.RegularExpressions;
 
 namespace IdleMaster
 {
@@ -24,7 +22,6 @@ namespace IdleMaster
             Settings.Default.maxHour = (int)numericMaxHour.Value;
 
             Settings.Default.minToTray = chkMinToTray.Checked;
-            Settings.Default.showUsername = chkShowUsername.Checked;
             Settings.Default.Save();
             Close();
         }
@@ -34,11 +31,6 @@ namespace IdleMaster
             if (Settings.Default.minToTray)
             {
                 chkMinToTray.Checked = true;
-            }
-
-            if (Settings.Default.showUsername)
-            {
-                chkShowUsername.Checked = true;
             }
 
             numericSimulNum.Value = Settings.Default.simulNum;
