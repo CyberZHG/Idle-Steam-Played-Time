@@ -54,7 +54,7 @@ namespace IdleMaster
             {
                 var game = AllGames.ElementAt(i);
                 appIds[i] = game.AppId;
-                if (game.HoursPlayed >= Settings.Default.maxHour || blackList.Contains(appIds[i]))
+                if (blackList.Contains(appIds[i]))
                 {
                     hours[i] = 0.0;
                 }
@@ -141,8 +141,7 @@ namespace IdleMaster
                 {
                     return;
                 }
-                var multi = AllGames.Where(b => b.HoursPlayed < Settings.Default.maxHour);
-                if (multi.Count() > 0)
+                if (AllGames.Count() > 0)
                 {
                     StartMultipleIdle();
                 }
@@ -173,22 +172,22 @@ namespace IdleMaster
                 totalHour += game.HoursPlayed;
                 totalSelected += game.SelectedCount;
                 dataGridGameState.Rows.Add(new object[] {
-                    (i + 1).ToString(),
-                    game.AppId.ToString(),
+                    i + 1,
+                    game.AppId,
                     game.Name,
-                    game.HoursPlayed.ToString(),
+                    game.HoursPlayed,
                     game.InIdle,
                     game.SelectedCount,
                     whiteList.Contains(game.AppId),
                     blackList.Contains(game.AppId) });
             }
             dataGridGameState.Rows.Insert(0, new object[] {
-                    "0",
-                    "",
+                    0,
+                    0,
                     "Total",
-                    totalHour.ToString(),
+                    totalHour,
                     false,
-                    totalSelected.ToString(),
+                    totalSelected,
                     false,
                     false });
         }
@@ -203,9 +202,8 @@ namespace IdleMaster
                     badge.StopIdle();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Logger.Exception(ex, "frmMain -> StopIdle");
             }
         }
 
@@ -232,9 +230,8 @@ namespace IdleMaster
                 }
                 ProcessGamesOnPage(response);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Logger.Exception(ex, "Badge -> LoadBadgesAsync, for profile = " + Settings.Default.myProfileURL);
                 ReloadCount = 1;
                 tmrBadgeReload.Enabled = true;
                 return;
@@ -269,7 +266,7 @@ namespace IdleMaster
                 }
             }
             RetryCount = 0;
-            if (AllGames.Where(b => b.HoursPlayed < Settings.Default.maxHour).Count() == 0)
+            if (AllGames.Count() == 0)
             {
                 IdleComplete();
             }
@@ -317,9 +314,7 @@ namespace IdleMaster
         private void tmrCheckCookieData_Tick(object sender, EventArgs e)
         {
             var connected = !string.IsNullOrWhiteSpace(Settings.Default.sessionid) && !string.IsNullOrWhiteSpace(Settings.Default.steamLogin);
-
-            lblCookieStatus.Text = connected ? localization.strings.idle_master_connected : localization.strings.idle_master_notconnected;
-            lblCookieStatus.ForeColor = connected ? Color.Green : Color.Black;
+            
             picCookieStatus.Image = connected ? Resources.imgTrue : Resources.imgFalse;
             lnkSignIn.Visible = !connected;
             lnkResetCookies.Visible = connected;
@@ -399,11 +394,8 @@ namespace IdleMaster
         {
             if (WindowState == FormWindowState.Minimized)
             {
-                if (Settings.Default.minToTray)
-                {
-                    notifyIcon1.Visible = true;
-                    Hide();
-                }
+                notifyIcon1.Visible = true;
+                Hide();
             }
             else if (WindowState == FormWindowState.Normal)
             {
@@ -495,7 +487,7 @@ namespace IdleMaster
                 Settings.Default.whiteList = String.Join(",", whiteList.Select(i => i.ToString()).ToArray());
                 Settings.Default.Save();
             }
-            else
+            else if (e.ColumnIndex == ColNever.Index)
             {
                 if ((bool)cell.Value)
                 {
@@ -510,6 +502,25 @@ namespace IdleMaster
                 }
                 Settings.Default.blackList = String.Join(",", blackList.Select(i => i.ToString()).ToArray());
                 Settings.Default.Save();
+            }
+            else if (e.ColumnIndex == ColIdle.Index)
+            {
+                if ((bool)cell.Value)
+                {
+                    AllGames.Find(g => g.AppId == appId).Idle();
+                }
+                else
+                {
+                    AllGames.Find(g => g.AppId == appId).StopIdle();
+                }
+            }
+        }
+
+        private void dataGridGameState_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (dataGridGameState.IsCurrentCellDirty)
+            {
+                dataGridGameState.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
         }
     }

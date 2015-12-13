@@ -1,37 +1,35 @@
 ﻿using System;
-using System.Deployment.Application;
+using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Forms;
 
 namespace IdleMaster
 {
-  public partial class frmAbout : Form
-  {
-    public frmAbout()
+    public partial class frmAbout : Form
     {
-      InitializeComponent();
-    }
+        public frmAbout()
+        {
+            InitializeComponent();
+        }
 
-    private void btnOK_Click(object sender, EventArgs e)
-    {
-      Close();
-    }
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
 
-    private void frmAbout_Load(object sender, EventArgs e)
-    {
-      // Localize the form
-      btnOK.Text = localization.strings.ok;
-        
-      if (ApplicationDeployment.IsNetworkDeployed)
-      {
-        var version = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
-        lblVersion.Text = "Idle Master v" + version;
-      }
-      else
-      {
-        var version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-        lblVersion.Text = "Idle Master v" + version;
-      }
+        private void frmAbout_Load(object sender, EventArgs e)
+        {
+            labelVersion.Text = "v" + Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://github.com/jshackles/idle_master");
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://github.com/XGG-Studio/Idle-Steam-Played-Time");
+        }
     }
-  }
 }

@@ -73,16 +73,6 @@ namespace IdleMaster.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap imgDocument {
-            get {
-                object obj = ResourceManager.GetObject("imgDocument", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap imgExit {
             get {
                 object obj = ResourceManager.GetObject("imgExit", resourceCulture);
@@ -133,46 +123,6 @@ namespace IdleMaster.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap imgPause {
-            get {
-                object obj = ResourceManager.GetObject("imgPause", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap imgPauseSmall {
-            get {
-                object obj = ResourceManager.GetObject("imgPauseSmall", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap imgPlay {
-            get {
-                object obj = ResourceManager.GetObject("imgPlay", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap imgPlaySmall {
-            get {
-                object obj = ResourceManager.GetObject("imgPlaySmall", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap imgSettings {
             get {
                 object obj = ResourceManager.GetObject("imgSettings", resourceCulture);
@@ -183,49 +133,9 @@ namespace IdleMaster.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap imgSkip {
-            get {
-                object obj = ResourceManager.GetObject("imgSkip", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap imgSkipSmall {
-            get {
-                object obj = ResourceManager.GetObject("imgSkipSmall", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap imgSpin {
             get {
                 object obj = ResourceManager.GetObject("imgSpin", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap imgStatistics {
-            get {
-                object obj = ResourceManager.GetObject("imgStatistics", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap imgTrash {
-            get {
-                object obj = ResourceManager.GetObject("imgTrash", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

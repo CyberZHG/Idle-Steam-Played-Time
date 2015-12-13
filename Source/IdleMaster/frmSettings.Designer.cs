@@ -34,17 +34,12 @@ namespace IdleMaster
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSettings));
             this.grpGeneral = new System.Windows.Forms.GroupBox();
-            this.numericMaxHour = new System.Windows.Forms.NumericUpDown();
-            this.labelMaxHour = new System.Windows.Forms.Label();
             this.numericSimulNum = new System.Windows.Forms.NumericUpDown();
             this.labelSimulNum = new System.Windows.Forms.Label();
-            this.chkMinToTray = new System.Windows.Forms.CheckBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.ttHints = new System.Windows.Forms.ToolTip(this.components);
-            this.btnAdvanced = new System.Windows.Forms.Button();
             this.grpGeneral.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericMaxHour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericSimulNum)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,54 +47,18 @@ namespace IdleMaster
             // 
             this.grpGeneral.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpGeneral.Controls.Add(this.numericMaxHour);
-            this.grpGeneral.Controls.Add(this.labelMaxHour);
             this.grpGeneral.Controls.Add(this.numericSimulNum);
             this.grpGeneral.Controls.Add(this.labelSimulNum);
-            this.grpGeneral.Controls.Add(this.chkMinToTray);
             this.grpGeneral.Location = new System.Drawing.Point(13, 12);
             this.grpGeneral.Name = "grpGeneral";
-            this.grpGeneral.Size = new System.Drawing.Size(345, 98);
+            this.grpGeneral.Size = new System.Drawing.Size(345, 51);
             this.grpGeneral.TabIndex = 0;
             this.grpGeneral.TabStop = false;
             this.grpGeneral.Text = "General";
             // 
-            // numericMaxHour
-            // 
-            this.numericMaxHour.Location = new System.Drawing.Point(143, 66);
-            this.numericMaxHour.Maximum = new decimal(new int[] {
-            876000,
-            0,
-            0,
-            0});
-            this.numericMaxHour.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericMaxHour.Name = "numericMaxHour";
-            this.numericMaxHour.Size = new System.Drawing.Size(190, 21);
-            this.numericMaxHour.TabIndex = 8;
-            this.numericMaxHour.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericMaxHour.Value = new decimal(new int[] {
-            2400,
-            0,
-            0,
-            0});
-            // 
-            // labelMaxHour
-            // 
-            this.labelMaxHour.AutoSize = true;
-            this.labelMaxHour.Location = new System.Drawing.Point(78, 68);
-            this.labelMaxHour.Name = "labelMaxHour";
-            this.labelMaxHour.Size = new System.Drawing.Size(59, 12);
-            this.labelMaxHour.TabIndex = 7;
-            this.labelMaxHour.Text = "Max hour:";
-            this.labelMaxHour.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // numericSimulNum
             // 
-            this.numericSimulNum.Location = new System.Drawing.Point(143, 40);
+            this.numericSimulNum.Location = new System.Drawing.Point(149, 20);
             this.numericSimulNum.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -123,29 +82,18 @@ namespace IdleMaster
             // labelSimulNum
             // 
             this.labelSimulNum.AutoSize = true;
-            this.labelSimulNum.Location = new System.Drawing.Point(6, 42);
+            this.labelSimulNum.Location = new System.Drawing.Point(12, 22);
             this.labelSimulNum.Name = "labelSimulNum";
             this.labelSimulNum.Size = new System.Drawing.Size(131, 12);
             this.labelSimulNum.TabIndex = 5;
             this.labelSimulNum.Text = "Simultaneous numbers:";
             this.labelSimulNum.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // chkMinToTray
-            // 
-            this.chkMinToTray.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkMinToTray.Location = new System.Drawing.Point(8, 18);
-            this.chkMinToTray.Name = "chkMinToTray";
-            this.chkMinToTray.Size = new System.Drawing.Size(331, 16);
-            this.chkMinToTray.TabIndex = 0;
-            this.chkMinToTray.Text = "Minimize Idle Master to system tray";
-            this.chkMinToTray.UseVisualStyleBackColor = true;
-            // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(283, 118);
+            this.btnCancel.Location = new System.Drawing.Point(283, 71);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 21);
             this.btnCancel.TabIndex = 2;
@@ -156,7 +104,7 @@ namespace IdleMaster
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(202, 118);
+            this.btnOK.Location = new System.Drawing.Point(202, 71);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 21);
             this.btnOK.TabIndex = 3;
@@ -164,26 +112,13 @@ namespace IdleMaster
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // btnAdvanced
-            // 
-            this.btnAdvanced.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAdvanced.Image = global::IdleMaster.Properties.Resources.imgLock;
-            this.btnAdvanced.Location = new System.Drawing.Point(12, 118);
-            this.btnAdvanced.Name = "btnAdvanced";
-            this.btnAdvanced.Size = new System.Drawing.Size(25, 21);
-            this.btnAdvanced.TabIndex = 4;
-            this.ttHints.SetToolTip(this.btnAdvanced, "Display advanced authentication information");
-            this.btnAdvanced.UseVisualStyleBackColor = true;
-            this.btnAdvanced.Click += new System.EventHandler(this.btnAdvanced_Click);
-            // 
             // frmSettings
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(370, 150);
-            this.Controls.Add(this.btnAdvanced);
+            this.ClientSize = new System.Drawing.Size(370, 103);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.grpGeneral);
@@ -196,7 +131,6 @@ namespace IdleMaster
             this.Load += new System.EventHandler(this.frmSettings_Load);
             this.grpGeneral.ResumeLayout(false);
             this.grpGeneral.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericMaxHour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericSimulNum)).EndInit();
             this.ResumeLayout(false);
 
@@ -205,14 +139,10 @@ namespace IdleMaster
         #endregion
 
         private GroupBox grpGeneral;
-        private CheckBox chkMinToTray;
         private Button btnCancel;
         private Button btnOK;
-        private Button btnAdvanced;
         private ToolTip ttHints;
         private NumericUpDown numericSimulNum;
         private Label labelSimulNum;
-        private NumericUpDown numericMaxHour;
-        private Label labelMaxHour;
     }
 }

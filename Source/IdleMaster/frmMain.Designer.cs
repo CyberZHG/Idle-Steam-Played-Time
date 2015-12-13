@@ -33,7 +33,6 @@ namespace IdleMaster
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            this.lblCookieStatus = new System.Windows.Forms.Label();
             this.tmrCheckCookieData = new System.Windows.Forms.Timer(this.components);
             this.lnkResetCookies = new System.Windows.Forms.LinkLabel();
             this.lnkSignIn = new System.Windows.Forms.LinkLabel();
@@ -70,15 +69,6 @@ namespace IdleMaster
             ((System.ComponentModel.ISupportInitialize)(this.dataGridGameState)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblCookieStatus
-            // 
-            this.lblCookieStatus.AutoSize = true;
-            this.lblCookieStatus.Location = new System.Drawing.Point(31, 37);
-            this.lblCookieStatus.Name = "lblCookieStatus";
-            this.lblCookieStatus.Size = new System.Drawing.Size(227, 12);
-            this.lblCookieStatus.TabIndex = 0;
-            this.lblCookieStatus.Text = "Idle Master is not connected to Steam";
-            // 
             // tmrCheckCookieData
             // 
             this.tmrCheckCookieData.Enabled = true;
@@ -87,7 +77,7 @@ namespace IdleMaster
             // lnkResetCookies
             // 
             this.lnkResetCookies.AutoSize = true;
-            this.lnkResetCookies.Location = new System.Drawing.Point(233, 37);
+            this.lnkResetCookies.Location = new System.Drawing.Point(36, 37);
             this.lnkResetCookies.Name = "lnkResetCookies";
             this.lnkResetCookies.Size = new System.Drawing.Size(65, 12);
             this.lnkResetCookies.TabIndex = 4;
@@ -98,7 +88,7 @@ namespace IdleMaster
             // lnkSignIn
             // 
             this.lnkSignIn.AutoSize = true;
-            this.lnkSignIn.Location = new System.Drawing.Point(243, 37);
+            this.lnkSignIn.Location = new System.Drawing.Point(36, 37);
             this.lnkSignIn.Name = "lnkSignIn";
             this.lnkSignIn.Size = new System.Drawing.Size(59, 12);
             this.lnkSignIn.TabIndex = 5;
@@ -114,7 +104,7 @@ namespace IdleMaster
             this.mnuTop.Location = new System.Drawing.Point(0, 0);
             this.mnuTop.Name = "mnuTop";
             this.mnuTop.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.mnuTop.Size = new System.Drawing.Size(733, 24);
+            this.mnuTop.Size = new System.Drawing.Size(727, 24);
             this.mnuTop.TabIndex = 19;
             this.mnuTop.Text = "menuStrip1";
             // 
@@ -195,7 +185,7 @@ namespace IdleMaster
             this.ssFooter.Name = "ssFooter";
             this.ssFooter.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ssFooter.ShowItemToolTips = true;
-            this.ssFooter.Size = new System.Drawing.Size(733, 22);
+            this.ssFooter.Size = new System.Drawing.Size(727, 22);
             this.ssFooter.SizingGrip = false;
             this.ssFooter.TabIndex = 20;
             this.ssFooter.Text = "statusStrip1";
@@ -265,16 +255,16 @@ namespace IdleMaster
             this.dataGridGameState.Name = "dataGridGameState";
             this.dataGridGameState.RowHeadersVisible = false;
             this.dataGridGameState.RowTemplate.Height = 23;
-            this.dataGridGameState.Size = new System.Drawing.Size(706, 332);
+            this.dataGridGameState.Size = new System.Drawing.Size(700, 332);
             this.dataGridGameState.TabIndex = 29;
             this.dataGridGameState.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridGameState_CellValueChanged);
+            this.dataGridGameState.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridGameState_CurrentCellDirtyStateChanged);
             // 
             // ColId
             // 
             this.ColId.HeaderText = "ID";
             this.ColId.Name = "ColId";
             this.ColId.ReadOnly = true;
-            this.ColId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.ColId.Width = 40;
             // 
             // ColAppId
@@ -282,7 +272,6 @@ namespace IdleMaster
             this.ColAppId.HeaderText = "App ID";
             this.ColAppId.Name = "ColAppId";
             this.ColAppId.ReadOnly = true;
-            this.ColAppId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.ColAppId.Width = 80;
             // 
             // ColName
@@ -291,7 +280,6 @@ namespace IdleMaster
             this.ColName.HeaderText = "Name";
             this.ColName.Name = "ColName";
             this.ColName.ReadOnly = true;
-            this.ColName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.ColName.Width = 300;
             // 
             // ColHours
@@ -299,14 +287,12 @@ namespace IdleMaster
             this.ColHours.HeaderText = "Hours";
             this.ColHours.Name = "ColHours";
             this.ColHours.ReadOnly = true;
-            this.ColHours.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.ColHours.Width = 80;
             // 
             // ColIdle
             // 
             this.ColIdle.HeaderText = "Idle";
             this.ColIdle.Name = "ColIdle";
-            this.ColIdle.ReadOnly = true;
             this.ColIdle.Width = 40;
             // 
             // IdleCount
@@ -314,7 +300,6 @@ namespace IdleMaster
             this.IdleCount.HeaderText = "Count";
             this.IdleCount.Name = "IdleCount";
             this.IdleCount.ReadOnly = true;
-            this.IdleCount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.IdleCount.Width = 60;
             // 
             // ColFavor
@@ -334,12 +319,11 @@ namespace IdleMaster
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(733, 413);
+            this.ClientSize = new System.Drawing.Size(727, 413);
             this.Controls.Add(this.dataGridGameState);
             this.Controls.Add(this.picCookieStatus);
             this.Controls.Add(this.lnkSignIn);
             this.Controls.Add(this.lnkResetCookies);
-            this.Controls.Add(this.lblCookieStatus);
             this.Controls.Add(this.mnuTop);
             this.Controls.Add(this.ssFooter);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -361,8 +345,6 @@ namespace IdleMaster
         }
 
         #endregion
-
-        private Label lblCookieStatus;
         private Timer tmrCheckCookieData;
         private LinkLabel lnkResetCookies;
         private LinkLabel lnkSignIn;

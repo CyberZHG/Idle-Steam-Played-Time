@@ -1,11 +1,17 @@
 Idle Steam Played Time
 ======================
 
-The repository is a modification of the original [Idle Master](https://github.com/jshackles/idle_master). You can idle multiple games simultaneously, a game with more played time will have a higher probability to be idled. The game will have a higher probability to be selected if the corresponding `favor` checkbox is checked, while it will never be selected if the `never` checkbox is checked.
+The repository is a modification of the original [Idle Master](https://github.com/jshackles/idle_master). 
 
-You can find the lastest built files in the [release](https://github.com/XGG-Studio/Idle-Steam-Played-Time/releases) page.
+You can idle multiple games simultaneously:
+* A game with more played time will have a higher probability to be selected. 
+* A game will have a higher probability to be selected if the corresponding `favor` checkbox is checked. 
+* A game will never be selected if the `never` checkbox is checked. (And `never` has higher priority than `favor`)
+* You can manually start or stop an idle by change the state of the corresponding `idle` checkbox. (Even if `never` is checked)
 
-![image](https://cloud.githubusercontent.com/assets/853842/11621870/613a6cdc-9cfb-11e5-90f0-80821238d6fb.png)
+You can find the lastest built files in [releases](https://github.com/CyberZHG/Idle-Steam-Played-Time/releases) page.
+
+![image](https://cloud.githubusercontent.com/assets/853842/11624217/3a42dcb0-9d0d-11e5-9d37-4b17309072cd.png)
 
 Credits
 -------
